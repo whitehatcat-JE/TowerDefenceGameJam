@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccnt5f231dw6d"]
+
+[ext_resource type="Script" path="res://main/enviroment_3d.gd" id="1_t2shv"]
+[ext_resource type="PackedScene" uid="uid://dgf7pwuv337sv" path="res://main/level.tscn" id="2_bjcbj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_imcd5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1733y"]
+albedo_color = Color(0.580392, 0.0470588, 0.203922, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0fqri"]
+viewport_path = NodePath("levelViewport")
+
+[sub_resource type="Environment" id="Environment_xpkox"]
+background_mode = 1
+background_color = Color(0.137255, 0.784314, 0.909804, 1)
+ambient_light_color = Color(0.803922, 0.803922, 0.803922, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[node name="enviroment3D" type="Node3D"]
+script = ExtResource("1_t2shv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_imcd5")
+surface_material_override/0 = SubResource("StandardMaterial3D_1733y")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.8326, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.03, 0, 0, 0, -4.50227e-08, 1.03, 0, -1.03, -4.50227e-08, 0, 7.48979, 0)
+texture = SubResource("ViewportTexture_0fqri")
+
+[node name="levelViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1152, 648)
+
+[node name="level" parent="levelViewport" instance=ExtResource("2_bjcbj")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xpkox")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.7456, 0)
