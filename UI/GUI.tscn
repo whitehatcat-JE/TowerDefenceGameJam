@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxqcgu3nt0alg"]
+
+[ext_resource type="Script" path="res://UI/GUI.gd" id="1_utu6n"]
+[ext_resource type="PackedScene" path="res://UI/menu_ui.tscn" id="2_62hen"]
+[ext_resource type="PackedScene" uid="uid://8q6ovcg2jcc4" path="res://UI/GameUI.tscn" id="3_jv1r4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fp322"]
+
+[sub_resource type="Theme" id="Theme_om7s4"]
+/styles/GUIGreyey = SubResource("StyleBoxFlat_fp322")
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_om7s4")
+script = ExtResource("1_utu6n")
+
+[node name="MenuUI" parent="." instance=ExtResource("2_62hen")]
+layout_mode = 1
+
+[node name="GameUI" parent="." instance=ExtResource("3_jv1r4")]
+layout_mode = 1
