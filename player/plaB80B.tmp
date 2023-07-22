@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbaesskaah8wa"]
+
+[ext_resource type="Script" path="res://player/Player.gd" id="1_xp17c"]
+[ext_resource type="Texture2D" uid="uid://wljuf2uo7pvw" path="res://player/lill-skull-guy-side.jpg" id="2_vorxp"]
+[ext_resource type="Script" path="res://player/SwordHitbox.gd" id="3_lfrnb"]
+[ext_resource type="Script" path="res://player/Stats.gd" id="4_fmgyg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wqmnc"]
+radius = 63.0
+height = 126.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lgl2h"]
+radius = 64.0
+height = 128.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xp17c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wqmnc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vorxp")
+
+[node name="SwordHitbox" type="Marker2D" parent="."]
+visible = false
+
+[node name="Hitbox" type="Area2D" parent="SwordHitbox"]
+script = ExtResource("3_lfrnb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SwordHitbox/Hitbox"]
+shape = SubResource("CapsuleShape2D_lgl2h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_fmgyg")
