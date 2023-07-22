@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wljuf2uo7pvw"
-path="res://.godot/imported/lill-skull-guy-side.jpg-254e8e911b7adb4b3014fb4496c36023.ctex"
+uid="uid://hfjitjm2c386"
+path="res://.godot/imported/playerAttack.png-8eb3215ddd1302f96b03f3677b8702a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/lill-skull-guy-side.jpg"
-dest_files=["res://.godot/imported/lill-skull-guy-side.jpg-254e8e911b7adb4b3014fb4496c36023.ctex"]
+source_file="res://main/playerAttack.png"
+dest_files=["res://.godot/imported/playerAttack.png-8eb3215ddd1302f96b03f3677b8702a6.ctex"]
 
 [params]
 

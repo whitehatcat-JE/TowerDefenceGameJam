@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccnt5f231dw6d"]
+[gd_scene load_steps=10 format=3 uid="uid://ccnt5f231dw6d"]
 
 [ext_resource type="Script" path="res://main/enviroment_3d.gd" id="1_t2shv"]
 [ext_resource type="PackedScene" uid="uid://dgf7pwuv337sv" path="res://main/level.tscn" id="2_bjcbj"]
 [ext_resource type="ArrayMesh" uid="uid://dgdytpq3ejngx" path="res://main/TowerBoi.obj" id="2_eid18"]
+[ext_resource type="PackedScene" uid="uid://8q6ovcg2jcc4" path="res://UI/GameUI.tscn" id="2_n7up7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_imcd5"]
 
@@ -25,6 +26,8 @@ volumetric_fog_density = 0.0
 [node name="enviroment3D" type="Node3D"]
 process_priority = -1
 script = ExtResource("1_t2shv")
+
+[node name="GameUI" parent="." instance=ExtResource("2_n7up7")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 2.51961, 0)

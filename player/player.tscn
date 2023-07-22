@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqaj2h0k5x558"]
+[gd_scene load_steps=13 format=3 uid="uid://cqaj2h0k5x558"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_xp17c"]
-[ext_resource type="Texture2D" uid="uid://wljuf2uo7pvw" path="res://player/lill-skull-guy-side.jpg" id="2_vorxp"]
+[ext_resource type="Texture2D" uid="uid://hfjitjm2c386" path="res://main/playerAttack.png" id="2_vv2vs"]
 [ext_resource type="Script" path="res://player/SwordHitbox.gd" id="3_lfrnb"]
 [ext_resource type="Script" path="res://player/Stats.gd" id="4_fmgyg"]
 
@@ -9,20 +9,69 @@
 radius = 63.0
 height = 126.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qvcc"]
+atlas = ExtResource("2_vv2vs")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdmhu"]
+atlas = ExtResource("2_vv2vs")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsrds"]
+atlas = ExtResource("2_vv2vs")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aeqd"]
+atlas = ExtResource("2_vv2vs")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii4hl"]
+atlas = ExtResource("2_vv2vs")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a2dr8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qvcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdmhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsrds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aeqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii4hl")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82cwk"]
 radius = 105.0
 height = 210.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 4
 script = ExtResource("1_xp17c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_wqmnc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="playerSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_vorxp")
+sprite_frames = SubResource("SpriteFrames_a2dr8")
+animation = &"attack"
 
 [node name="SwordHitbox" type="Marker2D" parent="."]
 

@@ -4,8 +4,8 @@
 [ext_resource type="StyleBox" uid="uid://bxaxtua03o8bv" path="res://UI/UIGrey.stylebox" id="1_ufxl4"]
 [ext_resource type="StyleBox" uid="uid://di38j2ynj3agl" path="res://UI/UIRed.stylebox" id="2_wnhax"]
 [ext_resource type="StyleBox" uid="uid://blmu7r5fy7g41" path="res://UI/UIGreen.tres" id="3_crekm"]
-[ext_resource type="StyleBox" uid="uid://bp8k6o2mxjupy" path="res://UI/UILightGray.stylebox" id="5_t53ag"]
-[ext_resource type="StyleBox" uid="uid://dpcai1ghlgd3s" path="res://UI/UIHover.stylebox" id="6_eistq"]
+[ext_resource type="StyleBox" path="res://UI/UILightGray.stylebox" id="5_t53ag"]
+[ext_resource type="StyleBox" path="res://UI/UIHover.stylebox" id="6_eistq"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3

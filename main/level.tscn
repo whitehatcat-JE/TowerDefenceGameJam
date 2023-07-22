@@ -1,13 +1,51 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgf7pwuv337sv"]
+[gd_scene load_steps=12 format=3 uid="uid://dgf7pwuv337sv"]
 
 [ext_resource type="Script" path="res://main/level.gd" id="1_clrrc"]
 [ext_resource type="Script" path="res://main/tower.gd" id="2_2sm2v"]
+[ext_resource type="Script" path="res://player/SwordHitbox.gd" id="3_8y3ks"]
 [ext_resource type="Texture2D" uid="uid://bl5k6pvlqamji" path="res://icon.svg" id="3_ka2l4"]
 [ext_resource type="PackedScene" uid="uid://by0oifw6gjcd8" path="res://main/objects/enemy.tscn" id="4_hrws1"]
 [ext_resource type="PackedScene" uid="uid://cqaj2h0k5x558" path="res://player/player.tscn" id="5_b521d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m23h"]
 size = Vector2(60, 60)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iqa8e"]
+radius = 92.0
+height = 184.0
+
+[sub_resource type="Animation" id="Animation_b6qbd"]
+resource_name = "emp"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("empAttack:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("empAttack:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(0.5, 0, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1, 1), Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q03fj"]
+_data = {
+"emp": SubResource("Animation_b6qbd")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fihn"]
 size = Vector2(30, 2853)
@@ -29,6 +67,21 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
+
+[node name="empAttack" type="Area2D" parent="tower"]
+scale = Vector2(0.2, 0.2)
+collision_mask = 2
+monitorable = false
+script = ExtResource("3_8y3ks")
+
+[node name="hitbox" type="CollisionShape2D" parent="tower/empAttack"]
+shape = SubResource("CapsuleShape2D_iqa8e")
+
+[node name="attackAnims" type="AnimationPlayer" parent="tower"]
+autoplay = "emp"
+libraries = {
+"": SubResource("AnimationLibrary_q03fj")
+}
 
 [node name="locationTrackers" type="Node2D" parent="."]
 
@@ -131,4 +184,5 @@ position = Vector2(773, 1149)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_2fihn")
 
+[connection signal="body_entered" from="tower/empAttack" to="tower/empAttack" method="_on_body_entered"]
 [connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]

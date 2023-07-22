@@ -8,9 +8,9 @@ var enemyValues = [ # Temp values
 ]
 
 @onready var enemies:Dictionary = {
-	"rookie":preload("res://main/objects/projectile_generic.tscn"),
-	"leader":preload("res://main/objects/projectile_generic.tscn"),
-	"mafiaBoss":preload("res://main/objects/projectile_generic.tscn")
+	"rookie":preload("res://main/objects/enemy.tscn"),
+	"leader":preload("res://main/objects/enemy.tscn"),
+	"mafiaBoss":preload("res://main/objects/enemy.tscn")
 }
 
 var waveBudget:int = 50

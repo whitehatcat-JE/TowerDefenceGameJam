@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_86mrb"]
 
 [node name="projectileGeneric" type="Area2D"]
+collision_layer = 5
 script = ExtResource("1_2x7sx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

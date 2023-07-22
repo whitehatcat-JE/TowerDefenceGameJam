@@ -1,8 +1,5 @@
 extends Control
 
-func _ready():
-	pass
-
 func update_health_bar(currentHealth:float, maxHealth:float):
 	$HealthBar.set_max(maxHealth)
 	$HealthBar.set_value(currentHealth)
