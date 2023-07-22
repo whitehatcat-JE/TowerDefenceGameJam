@@ -6,7 +6,6 @@ enum UPGRADES {
 }
 
 var xp_threshold:float = 5.0
-var xp:float = 0.0
 
 var unlockedUpgrades:Array[UPGRADES] = []
 var upgradeQueue:Array[UPGRADES] = [UPGRADES.crossbow, UPGRADES.cannon]
@@ -17,9 +16,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	xp += delta
-	if xp > xp_threshold:
-		xp -= xp_threshold
+	if GV.xp > xp_threshold:
+		GV.xp -= xp_threshold
 		levelUp()
 
 func levelUp():

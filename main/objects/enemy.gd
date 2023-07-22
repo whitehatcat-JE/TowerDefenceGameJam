@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+signal spawnXp(Node)
 @export var healthMax:float = 2.0
 var currentHealth = healthMax
 var dead:bool = false
@@ -7,6 +7,8 @@ var speed:float = 50.0
 var explodeRange:float = 10.0
 var target:Vector2
 var rectMax = 50
+var playerDamaged:bool = false
+@export var xpAmt:int = 1
 @onready var hpBar = $healthbarPivot/overHealth
 
 @onready var pivot:Node = $enemyPivot
@@ -26,6 +28,8 @@ func die():
 	$hitbox.set_deferred("disabled", true)
 	Stats.add_score(value)
 	Stats.add_score(1)
+	for xpAmt in range(xpAmt * 5 if playerDamaged else 1):
+		get_parent().spawnXp(self)
 	GV.enemies.erase(self)
 
 func _physics_process(delta):
@@ -45,10 +49,10 @@ func damage(amt:float):
 	hpBar.set_size(Vector2((currentHealth/healthMax) * rectMax, 5))
 	$healthbarPivot/underHealth.visible = true
 	$healthbarPivot/overHealth.visible = true
-	if currentHealth <= 0.0: die();
-	else: $knockbackAnim.play("knockback");
 	spawnEffect(effectHit)
 	spawnDmgIndicator(amt)
+	if currentHealth <= 0.0: die();
+	else: $knockbackAnim.play("knockback");
 
 func spawnEffect(EFFECT: PackedScene):
 	if EFFECT:

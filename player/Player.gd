@@ -47,3 +47,7 @@ func move():
 func _on_player_sprite_frame_changed():
 	if $playerSprite.animation == "attack" and $playerSprite.frame == 1:
 		emit_signal("plrAttack")
+
+func _on_xp_collision_field_area_entered(area):
+	area.queue_free()
+	GV.xp += 1

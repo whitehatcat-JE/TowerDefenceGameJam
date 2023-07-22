@@ -12,6 +12,7 @@ var enemyValues = [ # Temp values
 	"leader":preload("res://main/objects/enemy.tscn"),
 	"mafiaBoss":preload("res://main/objects/enemy.tscn")
 }
+@onready var xp = preload("res://main/objects/xp.tscn")
 
 var waveBudget:int = 50
 var spawnDelay:float = 1.0
@@ -39,7 +40,7 @@ func spawnHandler(enemyType):
 			continue
 		if spawnLoc.y > nwVision.global_position.y and spawnLoc.y < seVision.global_position.y:
 			continue
-		var newEnemy = enemies[enemyType].instantiate()
+		var newEnemy:Node = enemies[enemyType].instantiate()
 		self.add_child(newEnemy)
 		newEnemy.position = spawnLoc
 		newEnemy.target = $tower.position
@@ -56,4 +57,6 @@ func _on_wave_timer_timeout():
 		spawnHandler(enemyValues[typeRequested][0])
 		await get_tree().create_timer(spawnDelay).timeout
 	waveTimer.start()
-	
+
+func spawnXp(enemyName):
+	print(enemyName)

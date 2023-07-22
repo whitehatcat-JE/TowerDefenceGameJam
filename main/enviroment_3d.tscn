@@ -2,12 +2,11 @@
 
 [ext_resource type="Script" path="res://main/enviroment_3d.gd" id="1_t2shv"]
 [ext_resource type="PackedScene" uid="uid://dgf7pwuv337sv" path="res://main/level.tscn" id="2_bjcbj"]
+[ext_resource type="ArrayMesh" uid="uid://div1guv8g4vv3" path="res://main/Terrain.obj" id="2_bxunh"]
 [ext_resource type="ArrayMesh" uid="uid://dgdytpq3ejngx" path="res://main/TowerBoi.obj" id="2_eid18"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_qs7oh"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1733y"]
-albedo_color = Color(0.580392, 0.0470588, 0.203922, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ac3fk"]
+albedo_color = Color(0.501961, 0.0352941, 0.0235294, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1u2dv"]
 albedo_color = Color(0.588235, 0.588235, 0.572549, 1)
@@ -48,13 +47,13 @@ volumetric_fog_density = 0.0
 process_priority = -1
 script = ExtResource("1_t2shv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 2.51961, 0)
-mesh = SubResource("BoxMesh_qs7oh")
-surface_material_override/0 = SubResource("StandardMaterial3D_1733y")
+[node name="terrain" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 7.2659, 0)
+mesh = ExtResource("2_bxunh")
+surface_material_override/0 = SubResource("StandardMaterial3D_ac3fk")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.657215, 7.61665, 0.018925)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.657215, 7.3224, 0.018925)
 mesh = ExtResource("2_eid18")
 surface_material_override/0 = SubResource("StandardMaterial3D_1u2dv")
 

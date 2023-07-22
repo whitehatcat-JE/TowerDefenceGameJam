@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgf7pwuv337sv"]
+[gd_scene load_steps=10 format=3 uid="uid://dgf7pwuv337sv"]
 
 [ext_resource type="Script" path="res://main/level.gd" id="1_clrrc"]
 [ext_resource type="Script" path="res://main/tower.gd" id="2_2sm2v"]
-[ext_resource type="Script" path="res://player/SwordHitbox.gd" id="3_8y3ks"]
-[ext_resource type="PackedScene" uid="uid://by0oifw6gjcd8" path="res://main/objects/enemy.tscn" id="4_hrws1"]
+[ext_resource type="Script" path="res://main/empAttack.gd" id="3_fpgdu"]
 [ext_resource type="PackedScene" uid="uid://cqaj2h0k5x558" path="res://player/player.tscn" id="5_b521d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m23h"]
@@ -70,7 +69,7 @@ offset_bottom = 20.0
 [node name="empAttack" type="Area2D" parent="tower"]
 collision_mask = 2
 monitorable = false
-script = ExtResource("3_8y3ks")
+script = ExtResource("3_fpgdu")
 
 [node name="hitbox" type="CollisionShape2D" parent="tower/empAttack"]
 shape = SubResource("CapsuleShape2D_iqa8e")
@@ -93,10 +92,6 @@ position = Vector2(-673, -377)
 [node name="worldConstraintSE" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(2056, 1128)
-
-[node name="enemy" parent="." instance=ExtResource("4_hrws1")]
-position = Vector2(883, 495)
-healthMax = 2.0
 
 [node name="Player" parent="." instance=ExtResource("5_b521d")]
 position = Vector2(479, 280)

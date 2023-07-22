@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cqaj2h0k5x558"]
+[gd_scene load_steps=23 format=3 uid="uid://cqaj2h0k5x558"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_xp17c"]
 [ext_resource type="Texture2D" uid="uid://hfjitjm2c386" path="res://main/playerAttack.png" id="2_vv2vs"]
@@ -106,6 +106,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_faoq7"]
+radius = 63.0714
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fikur"]
 size = Vector2(45, 126)
 
@@ -164,7 +167,17 @@ autoplay = "idle"
 frame = 3
 frame_progress = 1.0
 
+[node name="xpCollisionField" type="Area2D" parent="playerSprite"]
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="hitbox" type="CollisionShape2D" parent="playerSprite/xpCollisionField"]
+shape = SubResource("CircleShape2D_faoq7")
+
 [node name="attackField" type="Area2D" parent="playerSprite"]
+position = Vector2(-200, 0)
 scale = Vector2(2, 2)
 collision_mask = 2
 monitorable = false
@@ -188,4 +201,5 @@ libraries = {
 }
 
 [connection signal="frame_changed" from="playerSprite" to="." method="_on_player_sprite_frame_changed"]
+[connection signal="area_entered" from="playerSprite/xpCollisionField" to="." method="_on_xp_collision_field_area_entered"]
 [connection signal="body_entered" from="playerSprite/attackField" to="playerSprite/attackField" method="_on_body_entered"]
