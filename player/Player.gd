@@ -8,10 +8,16 @@ enum {
 	ATTACK
 }
 #All The Variables needed throughout the code
+<<<<<<< Updated upstream
 var acc = 100
 var ms = 300
 var fr = 500
 var rs = 125
+=======
+var accelration = 500
+var maxSpeed = 300
+var friction = 500
+>>>>>>> Stashed changes
 
 var state = MOVE
 
