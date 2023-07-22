@@ -18,3 +18,8 @@ func debug_rand_change():
 	update_health_bar(cH,mH)
 	update_xp_bar(cX,mX)
 	
+
+
+func _on_rage_quit_button_pressed():
+	#Load End Screen
+	get_tree().change_scene_to_file("res://UI/EndUI.tscn")

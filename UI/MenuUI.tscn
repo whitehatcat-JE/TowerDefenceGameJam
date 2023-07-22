@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d228jnajkcqxe"]
+[gd_scene load_steps=7 format=3 uid="uid://d228jnajkcqxe"]
 
 [ext_resource type="StyleBox" uid="uid://bp8k6o2mxjupy" path="res://UI/UILightGray.stylebox" id="1_b3mgw"]
+[ext_resource type="Script" path="res://UI/MenuUI.gd" id="1_xonby"]
 [ext_resource type="StyleBox" uid="uid://dpcai1ghlgd3s" path="res://UI/UIHover.stylebox" id="2_nq0ld"]
 [ext_resource type="StyleBox" uid="uid://bxaxtua03o8bv" path="res://UI/UIGrey.stylebox" id="3_lkpo7"]
 
@@ -17,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xonby")
 
 [node name="Title" type="TextureRect" parent="."]
 layout_mode = 1
@@ -71,3 +73,4 @@ text = "Quit
 "
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
