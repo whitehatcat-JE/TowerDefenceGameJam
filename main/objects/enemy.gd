@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var healthMax:float = 2.0
 var currentHealth = healthMax
-
+var dead:bool = false
 var speed:float = 50.0
 var explodeRange:float = 10.0
 var target:Vector2
@@ -17,13 +17,23 @@ var rectMax = 50
 @export var effectDied: PackedScene = null
 
 func die():
-	queue_free()
+	dead = true
+	$healthbarPivot/explosionSprite.play("explosion")
+	$healthbarPivot/enemySpriteLeft.visible = false
+	$healthbarPivot/enemySpriteRight.visible = false
+	$healthbarPivot/underHealth.visible = false
+	$hitbox.set_deferred("disabled", true)
 
 func _physics_process(delta):
+	if dead: return;
 	look_at(target)
 	rotation_degrees += 90
 	$healthbarPivot.global_rotation = 0
 	velocity = (director.global_position - position) * speed
+	$healthbarPivot/enemySpriteLeft.visible = false
+	$healthbarPivot/enemySpriteRight.visible = false
+	if velocity.x > 0: $healthbarPivot/enemySpriteRight.visible = true
+	else: $healthbarPivot/enemySpriteLeft.visible = true
 	move_and_slide()
 
 func damage(amt:float):
@@ -45,3 +55,6 @@ func spawnDmgIndicator(damage: int):
 	var indicator = spawnEffect(indicatorDamage)
 	if indicator:
 		indicator.label.text = str(damage)
+
+func _on_explosion_sprite_animation_finished():
+	queue_free()

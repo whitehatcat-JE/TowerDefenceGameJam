@@ -48,6 +48,7 @@ transform = Transform3D(1.03, 0, 0, 0, 1.03, -3.19744e-14, 0, 3.19744e-14, 1.03,
 texture = SubResource("ViewportTexture_0fqri")
 
 [node name="levelViewport" type="SubViewport" parent="."]
+disable_3d = true
 transparent_bg = true
 size = Vector2i(1152, 648)
 

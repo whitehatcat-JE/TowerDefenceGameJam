@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://by0oifw6gjcd8"]
+[gd_scene load_steps=16 format=3 uid="uid://by0oifw6gjcd8"]
 
 [ext_resource type="Script" path="res://main/objects/enemy.gd" id="1_jygmu"]
-[ext_resource type="Texture2D" uid="uid://daq6h1ut81k32" path="res://main/projectileGenericTemp.png" id="2_bbypb"]
+[ext_resource type="Texture2D" uid="uid://bdusudrul6l1p" path="res://main/bugEnemy.png" id="2_uvyxx"]
+[ext_resource type="Texture2D" uid="uid://b76v012i4uid0" path="res://main/explosion.png" id="3_7lrp0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_amei8"]
 radius = 25.0799
@@ -13,7 +14,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("enemySprite:position")
+tracks/0/path = NodePath("healthbarPivot/enemySpriteLeft:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,18 +29,84 @@ _data = {
 "knockback": SubResource("Animation_mlyko")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkk3v"]
+atlas = ExtResource("3_7lrp0")
+region = Rect2(0, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62dj7"]
+atlas = ExtResource("3_7lrp0")
+region = Rect2(512, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkv7x"]
+atlas = ExtResource("3_7lrp0")
+region = Rect2(0, 256, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdddk"]
+atlas = ExtResource("3_7lrp0")
+region = Rect2(512, 256, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ew41"]
+atlas = ExtResource("3_7lrp0")
+region = Rect2(0, 512, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxeho"]
+atlas = ExtResource("3_7lrp0")
+region = Rect2(512, 512, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iflw8"]
+atlas = ExtResource("3_7lrp0")
+region = Rect2(0, 768, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3r02"]
+atlas = ExtResource("3_7lrp0")
+region = Rect2(512, 768, 512, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tcokr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkk3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62dj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkv7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdddk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ew41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxeho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iflw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3r02")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_jygmu")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_amei8")
-
-[node name="enemySprite" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-1.07288e-06, -8.34465e-07)
-scale = Vector2(3.125, 3.125)
-texture = ExtResource("2_bbypb")
 
 [node name="enemyPivot" type="Node2D" parent="."]
 
@@ -52,6 +119,12 @@ libraries = {
 }
 
 [node name="healthbarPivot" type="Node2D" parent="."]
+
+[node name="explosionSprite" type="AnimatedSprite2D" parent="healthbarPivot"]
+position = Vector2(0, -10)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_tcokr")
+animation = &"idle"
 
 [node name="underHealth" type="ColorRect" parent="healthbarPivot"]
 offset_left = -24.0
@@ -66,3 +139,20 @@ offset_top = -36.0
 offset_right = 26.0
 offset_bottom = -31.0
 color = Color(1, 0, 0, 1)
+
+[node name="enemySpriteLeft" type="Sprite2D" parent="healthbarPivot"]
+visible = false
+texture_filter = 1
+position = Vector2(2, 2)
+rotation = 0.523598
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_uvyxx")
+
+[node name="enemySpriteRight" type="Sprite2D" parent="healthbarPivot"]
+texture_filter = 1
+position = Vector2(-2, 0)
+rotation = 2.61799
+scale = Vector2(0.15, -0.15)
+texture = ExtResource("2_uvyxx")
+
+[connection signal="animation_finished" from="healthbarPivot/explosionSprite" to="." method="_on_explosion_sprite_animation_finished"]

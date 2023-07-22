@@ -7,12 +7,6 @@ var friction = 1700
 
 var attacking:bool = false
 
-#onready var ap = $AnimationPlayer
-#onready var at = $AnimationTree
-#onready var ans = at.get("parameters/playback")
-#onready var sh = $hitbox/Hitbox
-
-
 #runs every frame to load which ever state has been most recently called
 func _process(delta):
 	var ip = Vector2.ZERO
@@ -25,8 +19,11 @@ func _process(delta):
 	if ip != Vector2.ZERO:
 		velocity = velocity.move_toward(ip * maxSpeed, acceleration * delta)
 	else: 
-		#ans.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	if velocity.x > 0:
+		$playerSprite.scale.x = -0.5
+	else:
+		$playerSprite.scale.x = 0.5
 	move()
 	
 	if Input.is_action_just_pressed("attack") and !attacking:

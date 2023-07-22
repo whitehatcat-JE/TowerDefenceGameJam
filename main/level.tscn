@@ -132,7 +132,6 @@ texture = ExtResource("3_ka2l4")
 
 [node name="waveTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 5.0
 one_shot = true
 autostart = true
 
