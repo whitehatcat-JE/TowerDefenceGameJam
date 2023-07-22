@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
-@export var health:float = 2.0
+@export var healthMax:float = 2.0
+var currentHealth = healthMax
 
 var speed:float = 50.0
 var explodeRange:float = 10.0
 var target:Vector2
+var rectMax = 50
+@onready var hpBar = $ColorRect2 
 
 @onready var pivot:Node = $enemyPivot
 @onready var director:Node = $enemyPivot/enemyDirector
@@ -19,6 +22,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func damage(amt:float):
-	health -= amt
-	if health <= 0.0:
+	currentHealth -= amt
+	hpBar.set_size(Vector2((currentHealth/healthMax) * rectMax, 5))
+	if currentHealth <= 0.0:
 		die()
