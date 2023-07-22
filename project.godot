@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 
 Stats="*res://player/Stats.gd"
 
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=576
+
 [input]
 
 ui_left={
