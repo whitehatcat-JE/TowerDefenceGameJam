@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://by0oifw6gjcd8"]
+
+[ext_resource type="Script" path="res://main/objects/enemy.gd" id="1_jygmu"]
+[ext_resource type="Texture2D" uid="uid://daq6h1ut81k32" path="res://main/projectileGenericTemp.png" id="2_bbypb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amei8"]
+radius = 25.0799
+
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_jygmu")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_amei8")
+
+[node name="ProjectileGenericTemp" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1.07288e-06, -8.34465e-07)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("2_bbypb")
+
+[node name="enemyPivot" type="Node2D" parent="."]
+
+[node name="enemyDirector" type="Node2D" parent="enemyPivot"]
+position = Vector2(0, -3)

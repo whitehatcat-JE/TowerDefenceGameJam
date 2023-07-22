@@ -8,7 +8,7 @@ enum {
 	ATTACK
 }
 #All The Variables needed throughout the code
-var acc = 500
+var acc = 100
 var ms = 300
 var fr = 500
 var rs = 125

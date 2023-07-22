@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgf7pwuv337sv"]
+[gd_scene load_steps=8 format=3 uid="uid://dgf7pwuv337sv"]
 
 [ext_resource type="Script" path="res://main/level.gd" id="1_clrrc"]
 [ext_resource type="Script" path="res://main/tower.gd" id="2_2sm2v"]
 [ext_resource type="Texture2D" uid="uid://bl5k6pvlqamji" path="res://icon.svg" id="3_ka2l4"]
+[ext_resource type="PackedScene" uid="uid://by0oifw6gjcd8" path="res://main/objects/enemy.tscn" id="4_hrws1"]
+[ext_resource type="PackedScene" uid="uid://cqaj2h0k5x558" path="res://player/player.tscn" id="5_b521d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m23h"]
-size = Vector2(40, 40)
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fihn"]
+size = Vector2(30, 2853)
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_clrrc")
@@ -19,20 +24,111 @@ script = ExtResource("2_2sm2v")
 [node name="hitbox" type="CollisionShape2D" parent="tower/towerCollisions"]
 shape = SubResource("RectangleShape2D_2m23h")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(575, 323)
+[node name="ColorRect" type="ColorRect" parent="tower"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="locationTrackers" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="locationTrackers"]
 position = Vector2(348.5, 348.5)
 scale = Vector2(0.304687, 0.304687)
 texture = ExtResource("3_ka2l4")
 
-[node name="Icon2" type="Sprite2D" parent="."]
+[node name="Icon2" type="Sprite2D" parent="locationTrackers"]
 position = Vector2(495, 436)
 scale = Vector2(0.304687, 0.304687)
 texture = ExtResource("3_ka2l4")
 
-[node name="Icon3" type="Sprite2D" parent="."]
+[node name="Icon3" type="Sprite2D" parent="locationTrackers"]
 position = Vector2(703.75, 338.75)
 scale = Vector2(0.441406, 0.441406)
 texture = ExtResource("3_ka2l4")
+
+[node name="Icon4" type="Sprite2D" parent="locationTrackers"]
+position = Vector2(-477, 776)
+scale = Vector2(0.441406, 0.441406)
+texture = ExtResource("3_ka2l4")
+
+[node name="Icon5" type="Sprite2D" parent="locationTrackers"]
+position = Vector2(1345, 908)
+scale = Vector2(0.441406, 0.441406)
+texture = ExtResource("3_ka2l4")
+
+[node name="Icon6" type="Sprite2D" parent="locationTrackers"]
+position = Vector2(1501, 309)
+scale = Vector2(0.441406, 0.441406)
+texture = ExtResource("3_ka2l4")
+
+[node name="Icon7" type="Sprite2D" parent="locationTrackers"]
+position = Vector2(1633, -260)
+scale = Vector2(0.441406, 0.441406)
+texture = ExtResource("3_ka2l4")
+
+[node name="Icon8" type="Sprite2D" parent="locationTrackers"]
+position = Vector2(-399, -170)
+scale = Vector2(0.441406, 0.441406)
+texture = ExtResource("3_ka2l4")
+
+[node name="Icon9" type="Sprite2D" parent="locationTrackers"]
+position = Vector2(-303, 160)
+scale = Vector2(0.441406, 0.441406)
+texture = ExtResource("3_ka2l4")
+
+[node name="waveTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="worldConstraintNW" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-673, -377)
+
+[node name="worldConstraintSE" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2056, 1128)
+
+[node name="enemy" parent="." instance=ExtResource("4_hrws1")]
+position = Vector2(883, 495)
+
+[node name="Player" parent="." instance=ExtResource("5_b521d")]
+position = Vector2(479, 280)
+scale = Vector2(0.25, 0.25)
+
+[node name="camera2D" type="Camera2D" parent="Player"]
+unique_name_in_owner = true
+position = Vector2(60, 84)
+scale = Vector2(4, 4)
+
+[node name="visionNW" type="Node2D" parent="Player/camera2D"]
+unique_name_in_owner = true
+position = Vector2(-532, -308)
+
+[node name="visionSE" type="Node2D" parent="Player/camera2D"]
+unique_name_in_owner = true
+position = Vector2(559, 324)
+
+[node name="walls" type="StaticBody2D" parent="."]
+
+[node name="hitboxLeft" type="CollisionShape2D" parent="walls"]
+position = Vector2(-696, 447)
+shape = SubResource("RectangleShape2D_2fihn")
+
+[node name="hitboxRight" type="CollisionShape2D" parent="walls"]
+position = Vector2(2076, 381)
+shape = SubResource("RectangleShape2D_2fihn")
+
+[node name="hitboxUp" type="CollisionShape2D" parent="walls"]
+position = Vector2(706, -399)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_2fihn")
+
+[node name="hitboxDown" type="CollisionShape2D" parent="walls"]
+position = Vector2(773, 1149)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_2fihn")
+
+[connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]
