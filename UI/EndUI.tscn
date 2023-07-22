@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c44eavgyr53au"]
 
-[ext_resource type="Script" path="res://UI/ENDUI.gd" id="1_8s8dp"]
+[ext_resource type="Script" path="res://UI/EndUI.gd" id="1_clk3l"]
 [ext_resource type="StyleBox" uid="uid://bp8k6o2mxjupy" path="res://UI/UILightGray.stylebox" id="2_js62w"]
 [ext_resource type="StyleBox" uid="uid://dpcai1ghlgd3s" path="res://UI/UIHover.stylebox" id="3_fpx6x"]
 [ext_resource type="StyleBox" uid="uid://bxaxtua03o8bv" path="res://UI/UIGrey.stylebox" id="4_6ygti"]
@@ -17,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8s8dp")
+script = ExtResource("1_clk3l")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("NoiseTexture2D_bgmvo")
 
-[node name="Button" type="Button" parent="."]
+[node name="RestartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -47,3 +47,4 @@ theme_override_styles/focus = ExtResource("2_js62w")
 text = "Back to Menu"
 
 [connection signal="ready" from="Background" to="." method="_on_background_ready"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
