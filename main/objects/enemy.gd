@@ -12,6 +12,10 @@ var rectMax = 50
 @onready var pivot:Node = $enemyPivot
 @onready var director:Node = $enemyPivot/enemyDirector
 
+@onready var indicatorDamage = preload("res://main/objects/DamageIndicator.tscn")
+@export var effectHit: PackedScene = null
+@export var effectDied: PackedScene = null
+
 func die():
 	queue_free()
 
@@ -27,3 +31,17 @@ func damage(amt:float):
 	hpBar.set_size(Vector2((currentHealth/healthMax) * rectMax, 5))
 	if currentHealth <= 0.0: die();
 	else: $knockbackAnim.play("knockback");
+	spawnEffect(effectHit)
+	spawnDmgIndicator(amt)
+
+func spawnEffect(EFFECT: PackedScene):
+	if EFFECT:
+		var effect = EFFECT.instantiate()
+		get_parent().add_child(effect)
+		effect.global_position = global_position
+		return effect
+
+func spawnDmgIndicator(damage: int):
+	var indicator = spawnEffect(indicatorDamage)
+	if indicator:
+		indicator.label.text = str(damage)
