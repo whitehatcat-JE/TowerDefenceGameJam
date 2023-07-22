@@ -97,4 +97,13 @@ theme_override_styles/disabled = ExtResource("5_t53ag")
 theme_override_styles/focus = ExtResource("5_t53ag")
 text = "Give Up"
 
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 56.0
+offset_bottom = 63.0
+text = "Score: 
+Highscore: "
+
 [connection signal="pressed" from="RageQuitButton" to="." method="_on_rage_quit_button_pressed"]

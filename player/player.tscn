@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqaj2h0k5x558"]
+[gd_scene load_steps=13 format=3 uid="uid://cqaj2h0k5x558"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_xp17c"]
 [ext_resource type="Texture2D" uid="uid://hfjitjm2c386" path="res://main/playerAttack.png" id="2_vv2vs"]
 [ext_resource type="Script" path="res://player/SwordHitbox.gd" id="3_lfrnb"]
-[ext_resource type="Script" path="res://player/Stats.gd" id="4_fmgyg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wqmnc"]
 radius = 63.0
@@ -93,8 +92,5 @@ script = ExtResource("3_lfrnb")
 shape = SubResource("CapsuleShape2D_82cwk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="Node" type="Node" parent="."]
-script = ExtResource("4_fmgyg")
 
 [connection signal="body_entered" from="SwordHitbox/Hitbox" to="SwordHitbox/Hitbox" method="_on_body_entered"]

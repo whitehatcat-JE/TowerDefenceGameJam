@@ -1,5 +1,9 @@
 extends Control
 
+func _ready():
+	on_score_updated()
+	Stats.score_changed.connect(on_score_updated)
+
 func update_health_bar(currentHealth:float, maxHealth:float):
 	$HealthBar.set_max(maxHealth)
 	$HealthBar.set_value(currentHealth)
@@ -17,7 +21,13 @@ func debug_rand_change():
 	var cX = randf_range(0,mX)
 	update_health_bar(cH,mH)
 	update_xp_bar(cX,mX)
+
+func on_score_updated():
 	
+	var scoretext= "Score: " + String.num(Stats.get_score()) + "\n" 
+	scoretext += "High Score: " + String.num(Stats.get_highscore())
+	print(scoretext)
+	$ScoreLabel.set_text(scoretext)
 
 func _on_rage_quit_button_pressed():
 	#Load End Screen

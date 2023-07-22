@@ -24,7 +24,8 @@ func die():
 	$healthbarPivot/enemySpriteRight.visible = false
 	$healthbarPivot/underHealth.visible = false
 	$hitbox.set_deferred("disabled", true)
-	Stats.score += value
+	Stats.add_score(value)
+	Stats.add_score(1)
 
 func _physics_process(delta):
 	if dead: return;
@@ -53,10 +54,10 @@ func spawnEffect(EFFECT: PackedScene):
 		effect.global_position = global_position
 		return effect
 
-func spawnDmgIndicator(damage: int):
+func spawnDmgIndicator(dmg: int):
 	var indicator = spawnEffect(indicatorDamage)
 	if indicator:
-		indicator.label.text = str(damage)
+		indicator.label.text = str(dmg)
 
 func _on_explosion_sprite_animation_finished():
 	queue_free()
