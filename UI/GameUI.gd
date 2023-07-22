@@ -1,8 +1,11 @@
 extends Control
 
 func _ready():
+	# Score setup
 	on_score_updated()
+	# Connect signals
 	Stats.score_changed.connect(on_score_updated)
+	$RageQuitButton.pressed.connect(_on_rage_quit_button_pressed)
 
 func update_health_bar(currentHealth:float, maxHealth:float):
 	$HealthBar.set_max(maxHealth)

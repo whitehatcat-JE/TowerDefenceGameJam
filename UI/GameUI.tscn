@@ -105,5 +105,3 @@ offset_right = 56.0
 offset_bottom = 63.0
 text = "Score: 
 Highscore: "
-
-[connection signal="pressed" from="RageQuitButton" to="." method="_on_rage_quit_button_pressed"]

@@ -2,10 +2,12 @@ extends Control
 
 func _ready():
 	set_score_label()
-
-func _on_background_ready():
+	# TODO: Just make the background the right size
 	$Background.get_texture().set_width(size.x)
 	$Background.get_texture().set_height(size.y)
+	# Connect signals
+	$QuitButton.pressed.connect(_on_quit_button_pressed)
+	$RestartButton.pressed.connect(_on_restart_button_pressed)
 
 func _on_restart_button_pressed():
 	#Load menu scene
