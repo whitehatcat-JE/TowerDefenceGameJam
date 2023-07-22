@@ -77,6 +77,9 @@ size = Vector2i(1152, 648)
 [node name="level" parent="levelViewport" instance=ExtResource("2_bjcbj")]
 unique_name_in_owner = true
 
+[node name="empAttack" parent="levelViewport/level/tower" index="2"]
+scale = Vector2(0.2, 0.2)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xpkox")
 

@@ -85,6 +85,10 @@ unique_name_in_owner = true
 one_shot = true
 autostart = true
 
+[node name="enemyTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [node name="worldConstraintNW" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-673, -377)
@@ -132,3 +136,4 @@ shape = SubResource("RectangleShape2D_2fihn")
 
 [connection signal="body_entered" from="tower/empAttack" to="tower/empAttack" method="_on_body_entered"]
 [connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="enemyTimer" to="tower" method="attackEnemy"]

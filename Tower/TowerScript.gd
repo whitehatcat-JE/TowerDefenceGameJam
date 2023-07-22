@@ -19,3 +19,4 @@ func _process(delta):
 		elif $TestCube3.visible == true:
 			$TestCube3.visible = false
 			$TestCube.visible = true
+

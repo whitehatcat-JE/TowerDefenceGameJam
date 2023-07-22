@@ -7,6 +7,8 @@ var enemyValues = [ # Temp values
 	["mafiaBoss", 3]
 ]
 
+
+
 @onready var enemies:Dictionary = {
 	"rookie":preload("res://main/objects/enemy.tscn"),
 	"leader":preload("res://main/objects/enemy.tscn"),
@@ -59,4 +61,4 @@ func _on_wave_timer_timeout():
 	waveTimer.start()
 
 func spawnXp(enemyName):
-	print(enemyName)
+	print(enemyName)	

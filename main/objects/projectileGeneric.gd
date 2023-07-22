@@ -2,7 +2,7 @@ extends Area2D
 
 var speed:float = 200.0
 var explodeRange:float = 10.0
-var target:Vector2
+var target:Vector2 
 
 @onready var director:Node = %director
 
