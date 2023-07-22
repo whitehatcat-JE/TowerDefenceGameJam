@@ -8,16 +8,9 @@ enum {
 	ATTACK
 }
 #All The Variables needed throughout the code
-<<<<<<< Updated upstream
-var acc = 100
-var ms = 300
-var fr = 500
-var rs = 125
-=======
-var accelration = 500
-var maxSpeed = 300
-var friction = 500
->>>>>>> Stashed changes
+var acceleration = 1000
+var maxSpeed = 220
+var friction = 1700
 
 var state = MOVE
 
@@ -51,10 +44,10 @@ func move_state(delta):
 		#at.set("parameters/Run/blend_position", ip)
 		#at.set("parameters/Attack/blend_position", ip)
 		#ans.travel("Run")
-		velocity = velocity.move_toward(ip * ms, acc * delta)
+		velocity = velocity.move_toward(ip * maxSpeed, acceleration * delta)
 	else: 
 		#ans.travel("Idle")
-		velocity = velocity.move_toward(Vector2.ZERO, fr * delta)
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	move()
 	
 	if Input.is_action_just_pressed("attack"):
