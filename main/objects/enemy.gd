@@ -15,6 +15,7 @@ var rectMax = 50
 @onready var indicatorDamage = preload("res://main/objects/DamageIndicator.tscn")
 @export var effectHit: PackedScene = null
 @export var effectDied: PackedScene = null
+@export var value: int = 0
 
 func die():
 	dead = true
@@ -23,6 +24,7 @@ func die():
 	$healthbarPivot/enemySpriteRight.visible = false
 	$healthbarPivot/underHealth.visible = false
 	$hitbox.set_deferred("disabled", true)
+	Stats.score += value
 
 func _physics_process(delta):
 	if dead: return;

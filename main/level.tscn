@@ -1,14 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgf7pwuv337sv"]
+[gd_scene load_steps=14 format=3 uid="uid://dgf7pwuv337sv"]
 
 [ext_resource type="Script" path="res://main/level.gd" id="1_clrrc"]
 [ext_resource type="Script" path="res://main/tower.gd" id="2_2sm2v"]
 [ext_resource type="Script" path="res://player/SwordHitbox.gd" id="3_8y3ks"]
 [ext_resource type="Texture2D" uid="uid://bl5k6pvlqamji" path="res://icon.svg" id="3_ka2l4"]
+[ext_resource type="Shader" path="res://main/emp.gdshader" id="4_hblwq"]
 [ext_resource type="PackedScene" uid="uid://by0oifw6gjcd8" path="res://main/objects/enemy.tscn" id="4_hrws1"]
 [ext_resource type="PackedScene" uid="uid://cqaj2h0k5x558" path="res://player/player.tscn" id="5_b521d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m23h"]
 size = Vector2(60, 60)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8308"]
+shader = ExtResource("4_hblwq")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iqa8e"]
 radius = 92.0
@@ -69,10 +73,14 @@ offset_right = 20.0
 offset_bottom = 20.0
 
 [node name="empAttack" type="Area2D" parent="tower"]
-scale = Vector2(0.2, 0.2)
 collision_mask = 2
 monitorable = false
 script = ExtResource("3_8y3ks")
+
+[node name="ColorRect" type="ColorRect" parent="tower/empAttack"]
+material = SubResource("ShaderMaterial_u8308")
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="hitbox" type="CollisionShape2D" parent="tower/empAttack"]
 shape = SubResource("CapsuleShape2D_iqa8e")

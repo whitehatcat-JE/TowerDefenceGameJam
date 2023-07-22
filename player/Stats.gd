@@ -5,4 +5,15 @@ extends Node
 func _ready():
 	pass # Replace with function body.
 
-
+func _progress():
+	
+	var exp
+	
+	var score
+	var highscore
+	
+	if score > highscore:
+		highscore == score
+	
+	
+	
