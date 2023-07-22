@@ -28,6 +28,7 @@ process_priority = -1
 script = ExtResource("1_t2shv")
 
 [node name="GameUI" parent="." instance=ExtResource("2_n7up7")]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 2.51961, 0)

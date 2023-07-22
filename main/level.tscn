@@ -149,7 +149,7 @@ position = Vector2(883, 495)
 
 [node name="Player" parent="." instance=ExtResource("5_b521d")]
 position = Vector2(479, 280)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.35, 0.35)
 
 [node name="camera2D" type="Camera2D" parent="Player"]
 unique_name_in_owner = true

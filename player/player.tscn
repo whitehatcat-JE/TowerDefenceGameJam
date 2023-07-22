@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqaj2h0k5x558"]
+[gd_scene load_steps=14 format=3 uid="uid://cqaj2h0k5x558"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_xp17c"]
 [ext_resource type="Texture2D" uid="uid://hfjitjm2c386" path="res://main/playerAttack.png" id="2_vv2vs"]
@@ -29,6 +29,10 @@ region = Rect2(768, 0, 256, 256)
 atlas = ExtResource("2_vv2vs")
 region = Rect2(0, 256, 256, 256)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruy83"]
+atlas = ExtResource("2_vv2vs")
+region = Rect2(0, 0, 256, 256)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_a2dr8"]
 animations = [{
 "frames": [{
@@ -47,13 +51,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ii4hl")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruy83")
+}],
 "loop": true,
-"name": &"new_animation",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -69,6 +76,7 @@ script = ExtResource("1_xp17c")
 shape = SubResource("CapsuleShape2D_wqmnc")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_a2dr8")
 animation = &"attack"
