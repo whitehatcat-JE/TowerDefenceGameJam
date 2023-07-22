@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Stats="*res://player/Stats.gd"
+GV="*res://Tower/GV.gd"
 
 [display]
 

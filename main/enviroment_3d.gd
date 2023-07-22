@@ -14,3 +14,6 @@ func _process(delta):
 	var plrDif:Vector2 = (%level.playerLoc - defPlayerLoc) / SCALE_DIF
 	$Camera3D.position.x = plrDif.x + defCameraLoc.x
 	$Camera3D.position.z = plrDif.y + defCameraLoc.z
+
+func _on_player_plr_attack():
+	$Camera3D/screenshake.play("shake")

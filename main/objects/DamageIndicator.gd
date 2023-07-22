@@ -12,3 +12,6 @@ func _ready():
 func _process(delta):
 	global_position += speed * shiftDiection * delta
 	speed = max(speed - friction * delta, 0)
+
+func _on_spawn_anim_animation_finished(anim_name):
+	queue_free()

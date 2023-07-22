@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
+signal plrAttack
+
 #All The Variables needed throughout the code
-var acceleration = 1000
-var maxSpeed = 220
-var friction = 1700
+var acceleration = 2000
+var maxSpeed = 300
+var friction = 2000
 
 var attacking:bool = false
 
@@ -21,9 +23,9 @@ func _process(delta):
 	else: 
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	if velocity.x > 0:
-		$playerSprite.scale.x = -0.5
-	elif velocity.x < 0:
 		$playerSprite.scale.x = 0.5
+	else:
+		$playerSprite.scale.x = -0.5
 	move()
 	
 	if Input.is_action_just_pressed("attack") and !attacking:
@@ -31,12 +33,17 @@ func _process(delta):
 
 func attack():
 	attacking = true
+	$attackAnim.play("attack")
 	$playerSprite.play("attack")
-	$SwordHitbox/Hitbox.set_deferred("monitoring", true)
+	$playerSprite/attackSprite.play("sweep")
 	await get_tree().create_timer(0.5).timeout
-	$SwordHitbox/Hitbox.set_deferred("monitoring", false)
 	$playerSprite.play("idle")
+	$playerSprite/attackSprite.play("idle")
 	attacking = false
 
 func move():
 	move_and_slide()
+
+func _on_player_sprite_frame_changed():
+	if $playerSprite.animation == "attack" and $playerSprite.frame == 1:
+		emit_signal("plrAttack")

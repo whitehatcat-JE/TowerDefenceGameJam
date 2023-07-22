@@ -43,6 +43,7 @@ func spawnHandler(enemyType):
 		self.add_child(newEnemy)
 		newEnemy.position = spawnLoc
 		newEnemy.target = $tower.position
+		GV.enemies.append(newEnemy)
 		return
 
 func _on_wave_timer_timeout():

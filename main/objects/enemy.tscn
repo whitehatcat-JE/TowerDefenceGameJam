@@ -123,11 +123,12 @@ libraries = {
 
 [node name="explosionSprite" type="AnimatedSprite2D" parent="healthbarPivot"]
 position = Vector2(0, -10)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_tcokr")
 animation = &"idle"
 
 [node name="underHealth" type="ColorRect" parent="healthbarPivot"]
+visible = false
 offset_left = -24.0
 offset_top = -36.0
 offset_right = 26.0
@@ -135,6 +136,7 @@ offset_bottom = -31.0
 color = Color(0.592157, 0, 0, 1)
 
 [node name="overHealth" type="ColorRect" parent="healthbarPivot"]
+visible = false
 offset_left = -24.0
 offset_top = -36.0
 offset_right = 26.0

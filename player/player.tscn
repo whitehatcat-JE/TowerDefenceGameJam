@@ -1,16 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqaj2h0k5x558"]
+[gd_scene load_steps=22 format=3 uid="uid://cqaj2h0k5x558"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_xp17c"]
 [ext_resource type="Texture2D" uid="uid://hfjitjm2c386" path="res://main/playerAttack.png" id="2_vv2vs"]
+[ext_resource type="Texture2D" uid="uid://dvoj286yp04n5" path="res://main/attackSweep.png" id="3_b06pq"]
 [ext_resource type="Script" path="res://player/SwordHitbox.gd" id="3_lfrnb"]
+[ext_resource type="Script" path="res://player/Stats.gd" id="4_fmgyg"]
+[ext_resource type="Script" path="res://Tower/GV.gd" id="5_qlxj6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wqmnc"]
 radius = 63.0
 height = 126.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0qvcc"]
-atlas = ExtResource("2_vv2vs")
-region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kdmhu"]
 atlas = ExtResource("2_vv2vs")
@@ -36,9 +35,6 @@ region = Rect2(0, 0, 256, 256)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0qvcc")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_kdmhu")
 }, {
 "duration": 1.0,
@@ -58,14 +54,93 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ruy83")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82cwk"]
-radius = 105.0
-height = 210.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqo1t"]
+atlas = ExtResource("3_b06pq")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0cea"]
+atlas = ExtResource("3_b06pq")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsg20"]
+atlas = ExtResource("3_b06pq")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7073b"]
+atlas = ExtResource("3_b06pq")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bc0jd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqo1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0cea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsg20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7073b")
+}],
+"loop": false,
+"name": &"sweep",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fikur"]
+size = Vector2(45, 126)
+
+[sub_resource type="Animation" id="Animation_vjcyl"]
+resource_name = "attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playerSprite/attackField:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-200, 0), Vector2(0, 0), Vector2(400, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playerSprite/attackField:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyalm"]
+_data = {
+"attack": SubResource("Animation_vjcyl")
+}
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
@@ -79,18 +154,38 @@ texture_filter = 1
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_a2dr8")
 animation = &"attack"
+autoplay = "idle"
 
-[node name="SwordHitbox" type="Marker2D" parent="."]
+[node name="attackSprite" type="AnimatedSprite2D" parent="playerSprite"]
+position = Vector2(244, 0)
+sprite_frames = SubResource("SpriteFrames_bc0jd")
+animation = &"sweep"
+autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
-[node name="Hitbox" type="Area2D" parent="SwordHitbox"]
+[node name="attackField" type="Area2D" parent="playerSprite"]
+scale = Vector2(2, 2)
 collision_mask = 2
-monitoring = false
 monitorable = false
 script = ExtResource("3_lfrnb")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="SwordHitbox/Hitbox"]
-shape = SubResource("CapsuleShape2D_82cwk")
+[node name="hitbox" type="CollisionShape2D" parent="playerSprite/attackField"]
+position = Vector2(93.5, 0)
+shape = SubResource("RectangleShape2D_fikur")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="body_entered" from="SwordHitbox/Hitbox" to="SwordHitbox/Hitbox" method="_on_body_entered"]
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_fmgyg")
+
+[node name="GV" type="Node" parent="."]
+script = ExtResource("5_qlxj6")
+
+[node name="attackAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uyalm")
+}
+
+[connection signal="frame_changed" from="playerSprite" to="." method="_on_player_sprite_frame_changed"]
+[connection signal="body_entered" from="playerSprite/attackField" to="playerSprite/attackField" method="_on_body_entered"]

@@ -26,6 +26,7 @@ func die():
 	$hitbox.set_deferred("disabled", true)
 	Stats.add_score(value)
 	Stats.add_score(1)
+	GV.enemies.erase(self)
 
 func _physics_process(delta):
 	if dead: return;
@@ -42,6 +43,8 @@ func _physics_process(delta):
 func damage(amt:float):
 	currentHealth -= amt
 	hpBar.set_size(Vector2((currentHealth/healthMax) * rectMax, 5))
+	$healthbarPivot/underHealth.visible = true
+	$healthbarPivot/overHealth.visible = true
 	if currentHealth <= 0.0: die();
 	else: $knockbackAnim.play("knockback");
 	spawnEffect(effectHit)
