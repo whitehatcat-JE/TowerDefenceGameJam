@@ -1,0 +1,9 @@
+Add UI Logic
+- Health bars should have methods for changing the value.
+	- Health bars are NOT responsible for storing the value. No getters.
+	- Might be built in actually
+- Labels for health bars that show their value/maxvalue (check with team if we want this)
+	-Checked: XP bar should show scrap/xp towards next level.
+Quit buttons
+	-Menu
+	Gameplay
