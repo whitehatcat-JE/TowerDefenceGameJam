@@ -7,6 +7,7 @@
 radius = 25.0799
 
 [node name="enemy" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_jygmu")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]

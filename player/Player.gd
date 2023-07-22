@@ -58,6 +58,8 @@ func move_state(delta):
  #warning-ignore:unused_argument
 func attack_state(delta):
 	velocity = Vector2.ZERO
+	$SwordHitbox/Hitbox.set_deferred("monitoring", true)
+	await get_tree().create_timer(0.25).timeout
 	#ans.travel("Attack")
 	state = MOVE
 

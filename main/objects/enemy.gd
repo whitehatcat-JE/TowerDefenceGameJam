@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var health:float = 2.0
+
 var speed:float = 50.0
 var explodeRange:float = 10.0
 var target:Vector2
@@ -15,9 +17,8 @@ func _physics_process(delta):
 	pivot.rotation_degrees += 90
 	velocity = (director.global_position - position) * speed
 	move_and_slide()
-	if position.distance_to(target) < explodeRange:
-		die()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func damage(amt:float):
+	health -= amt
+	if health <= 0.0:
+		die()
