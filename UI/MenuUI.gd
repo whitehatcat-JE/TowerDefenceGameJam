@@ -1,5 +1,7 @@
 extends Control
 
+func _ready():
+	$HighscoreLabel.set_text("Highscore: " + String.num(Stats.get_highscore()))
 
 func _on_start_button_pressed():
 	#Load game scene

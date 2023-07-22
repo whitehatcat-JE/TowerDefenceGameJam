@@ -23,10 +23,8 @@ func debug_rand_change():
 	update_xp_bar(cX,mX)
 
 func on_score_updated():
-	
 	var scoretext= "Score: " + String.num(Stats.get_score()) + "\n" 
 	scoretext += "High Score: " + String.num(Stats.get_highscore())
-	print(scoretext)
 	$ScoreLabel.set_text(scoretext)
 
 func _on_rage_quit_button_pressed():

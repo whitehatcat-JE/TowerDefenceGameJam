@@ -63,10 +63,10 @@ anchor_left = 0.969
 anchor_top = 0.944
 anchor_right = 0.969
 anchor_bottom = 0.944
-offset_left = -56.256
-offset_top = -31.744
-offset_right = -0.256042
-offset_bottom = 0.255981
+offset_left = -512.256
+offset_top = -63.744
+offset_right = -448.256
+offset_bottom = -31.744
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/normal = ExtResource("1_b3mgw")
@@ -76,6 +76,21 @@ theme_override_styles/disabled = ExtResource("1_b3mgw")
 theme_override_styles/focus = ExtResource("1_b3mgw")
 text = "Quit
 "
+
+[node name="HighscoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.359
+anchor_top = 0.75
+anchor_right = 0.641
+anchor_bottom = 0.806
+offset_left = 0.383972
+offset_top = -3.05176e-05
+offset_right = -0.384033
+offset_bottom = -0.256042
+text = "Highscore: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
