@@ -55,6 +55,6 @@ func towerHealing():
 	
 	if GV.curPlayerLoc.distance_to(towerPos) < 100:
 		print("Player is in range")
-		if GV.health != GV.startingHealth:
-			GV.health += 1
+		if GV.get_health() != GV.startingHealth:
+			GV.change_health(1)
 			print("Player healed tower")
