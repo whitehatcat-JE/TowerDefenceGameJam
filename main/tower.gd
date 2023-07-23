@@ -8,6 +8,8 @@ enum UPGRADES {
 @onready var towerPos = $towerCollisions.global_position
 @onready var spawnBullet = preload("res://main/objects/projectile_generic.tscn")
 
+
+
 var xp_threshold:float = 5.0
 
 var unlockedUpgrades:Array[UPGRADES] = []
@@ -41,10 +43,18 @@ func attackEnemy():
 	for enemy in range(len(GV.enemies)):
 		if GV.enemies[enemy].global_position.distance_to(towerPos) < closestEnemyLocation.distance_to(towerPos):
 			closestEnemyLocation = GV.enemies[enemy].global_position
-			print("Enemy ", enemy, " chosen")
+			#print("Enemy ", enemy, " chosen")
 	
 	var bullet:Node = spawnBullet.instantiate()
 	self.add_child(bullet)
 	bullet.global_position = towerPos
 	bullet.target = closestEnemyLocation
-	print("Bullet fired")
+	#print("Bullet fired")
+
+func towerHealing():
+	
+	if GV.curPlayerLoc.distance_to(towerPos) < 100:
+		print("Player is in range")
+		if GV.health != GV.startingHealth:
+			GV.health += 1
+			print("Player healed tower")

@@ -11,6 +11,7 @@ var attacking:bool = false
 
 #runs every frame to load which ever state has been most recently called
 func _process(delta):
+	GV.curPlayerLoc = global_position
 	var ip = Vector2.ZERO
 #	(Left - Right) + (up - Down) Equals direction of travel,
 # Nomalized stops the diagonal from being longer than normal
