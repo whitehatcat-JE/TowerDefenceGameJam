@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1a5mpmt41qi8"
+path="res://.godot/imported/Protagonist Attack Hit 03.mp3-1887727345457d8e9804ed96f5f5d367.mp3str"
+
+[deps]
+
+source_file="res://audio/Protagonist Attack Hit 03.mp3"
+dest_files=["res://.godot/imported/Protagonist Attack Hit 03.mp3-1887727345457d8e9804ed96f5f5d367.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

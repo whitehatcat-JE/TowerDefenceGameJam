@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c44eavgyr53au"]
+[gd_scene load_steps=20 format=3 uid="uid://c44eavgyr53au"]
 
 [ext_resource type="Script" path="res://UI/EndUI.gd" id="1_clk3l"]
 [ext_resource type="Texture2D" uid="uid://biyv6itj3flb2" path="res://UI/TitleScreenBackGround.jpg" id="2_c6g6l"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://8j6ww61p7a8f" path="res://UI/Button-blue-darker.png" id="5_rnxdc"]
 [ext_resource type="Texture2D" uid="uid://d0vgc4x7rhjr7" path="res://UI/button-red-darker.png" id="7_3wqku"]
 [ext_resource type="Texture2D" uid="uid://k6xet0raedtd" path="res://UI/Red-Rage-quit-UI-button.png" id="8_5vecj"]
+[ext_resource type="AudioStream" uid="uid://bs2v7f80yu11u" path="res://audio/Kiwijam Menu Music Loop.mp3" id="8_povcf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x4okx"]
 texture = ExtResource("4_uthn2")
@@ -147,3 +148,7 @@ autoplay = "Rage quit"
 libraries = {
 "": SubResource("AnimationLibrary_x0npq")
 }
+
+[node name="mainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_povcf")
+autoplay = true

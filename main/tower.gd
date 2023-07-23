@@ -9,8 +9,6 @@ enum UPGRADES {
 
 @onready var spawnBullet = preload("res://main/objects/projectile_generic.tscn")
 
-
-
 var xp_threshold:float = 5.0
 var secondBulletUnlocked:bool = false
 
@@ -67,7 +65,5 @@ func attackEnemy():
 
 func towerHealing():
 	if GV.curPlayerLoc.distance_to(global_position) < 100:
-		print("Player is in range")
 		if GV.health != GV.startingHealth:
 			GV.health += 1
-			print("Player healed tower")

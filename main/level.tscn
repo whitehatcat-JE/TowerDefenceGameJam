@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgf7pwuv337sv"]
+[gd_scene load_steps=13 format=3 uid="uid://dgf7pwuv337sv"]
 
 [ext_resource type="Script" path="res://main/level.gd" id="1_clrrc"]
 [ext_resource type="Script" path="res://main/tower.gd" id="2_2sm2v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://main/towerCollisions.gd" id="3_l3b3u"]
 [ext_resource type="Texture2D" uid="uid://s8xmveoi4gg0" path="res://Tower/EMP Wave.png" id="4_kyicb"]
 [ext_resource type="PackedScene" uid="uid://cqaj2h0k5x558" path="res://player/player.tscn" id="5_b521d"]
+[ext_resource type="AudioStream" uid="uid://beob0xnkbkpff" path="res://audio/Kiwijam Main Music Loop.mp3" id="7_kgg0s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m23h"]
 size = Vector2(60, 60)
@@ -107,10 +108,11 @@ libraries = {
 
 [node name="waveTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 7.5
+wait_time = 3.0
 one_shot = true
 
 [node name="healingTimer" type="Timer" parent="."]
+wait_time = 0.2
 autostart = true
 
 [node name="enemyTimer" type="Timer" parent="."]
@@ -161,6 +163,10 @@ shape = SubResource("RectangleShape2D_2fihn")
 position = Vector2(773, 1149)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_2fihn")
+
+[node name="mainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kgg0s")
+autoplay = true
 
 [connection signal="timeout" from="budgetIncreasor" to="." method="_on_budget_increasor_timeout"]
 [connection signal="body_entered" from="tower/empAttack" to="tower/empAttack" method="_on_body_entered"]

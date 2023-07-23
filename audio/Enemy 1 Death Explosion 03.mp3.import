@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bu33olstfsyxh"
+path="res://.godot/imported/Enemy 1 Death Explosion 03.mp3-aca98eafb3c84969bcfd77870d1796b9.mp3str"
+
+[deps]
+
+source_file="res://audio/Enemy 1 Death Explosion 03.mp3"
+dest_files=["res://.godot/imported/Enemy 1 Death Explosion 03.mp3-aca98eafb3c84969bcfd77870d1796b9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

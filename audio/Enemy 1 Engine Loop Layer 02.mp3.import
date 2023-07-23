@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cao3u2llef6df"
+path="res://.godot/imported/Enemy 1 Engine Loop Layer 02.mp3-56f55bc07e10a66d12426a06599cfdb2.mp3str"
+
+[deps]
+
+source_file="res://audio/Enemy 1 Engine Loop Layer 02.mp3"
+dest_files=["res://.godot/imported/Enemy 1 Engine Loop Layer 02.mp3-56f55bc07e10a66d12426a06599cfdb2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

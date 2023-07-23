@@ -42,6 +42,7 @@ func attack():
 	$attackAnim.play("attack")
 	$playerSprite.play("attack")
 	$playerSprite/attackSprite.play("sweep")
+	$attackSFX.play()
 	await get_tree().create_timer(0.5).timeout
 	$playerSprite.play("idle")
 	$playerSprite/attackSprite.play("idle")

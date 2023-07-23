@@ -1,13 +1,10 @@
 extends Node2D
 
-
 var enemyValues = [ # Temp values
 	["rookie", 1],
 	["leader", 2],
 	["mafiaBoss", 5]
 ]
-
-
 
 @onready var enemies:Dictionary = {
 	"rookie":preload("res://main/objects/enemy.tscn"),
