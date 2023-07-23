@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://d228jnajkcqxe"]
 
-[ext_resource type="StyleBox" path="res://UI/UILightGray.stylebox" id="1_b3mgw"]
+[ext_resource type="StyleBox" uid="uid://bp8k6o2mxjupy" path="res://UI/UILightGray.stylebox" id="1_b3mgw"]
 [ext_resource type="Script" path="res://UI/MenuUI.gd" id="1_xonby"]
 [ext_resource type="Texture2D" uid="uid://dwr0atc4l44hu" path="res://UI/UI-Button.png" id="4_sn72e"]
 [ext_resource type="Texture2D" uid="uid://8j6ww61p7a8f" path="res://UI/Button-blue-darker.png" id="5_rjmaq"]
