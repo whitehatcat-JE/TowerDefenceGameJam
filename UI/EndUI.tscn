@@ -1,14 +1,74 @@
-[gd_scene load_steps=7 format=3 uid="uid://c44eavgyr53au"]
+[gd_scene load_steps=19 format=3 uid="uid://c44eavgyr53au"]
 
 [ext_resource type="Script" path="res://UI/EndUI.gd" id="1_clk3l"]
-[ext_resource type="StyleBox" uid="uid://bp8k6o2mxjupy" path="res://UI/UILightGray.stylebox" id="2_js62w"]
-[ext_resource type="StyleBox" uid="uid://dpcai1ghlgd3s" path="res://UI/UIHover.stylebox" id="3_fpx6x"]
-[ext_resource type="StyleBox" uid="uid://bxaxtua03o8bv" path="res://UI/UIGrey.stylebox" id="4_6ygti"]
+[ext_resource type="Texture2D" uid="uid://biyv6itj3flb2" path="res://UI/TitleScreenBackGround.jpg" id="2_c6g6l"]
+[ext_resource type="FontFile" uid="uid://cf1vryjtx8kj0" path="res://main/objects/ALGER.TTF" id="3_qgefk"]
+[ext_resource type="Texture2D" uid="uid://dwr0atc4l44hu" path="res://UI/UI-Button.png" id="4_uthn2"]
+[ext_resource type="Texture2D" uid="uid://8j6ww61p7a8f" path="res://UI/Button-blue-darker.png" id="5_rnxdc"]
+[ext_resource type="Texture2D" uid="uid://d0vgc4x7rhjr7" path="res://UI/button-red-darker.png" id="7_3wqku"]
+[ext_resource type="Texture2D" uid="uid://k6xet0raedtd" path="res://UI/Red-Rage-quit-UI-button.png" id="8_5vecj"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_7whug"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x4okx"]
+texture = ExtResource("4_uthn2")
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bgmvo"]
-noise = SubResource("FastNoiseLite_7whug")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qnpl3"]
+texture = ExtResource("5_rnxdc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5rknl"]
+texture = ExtResource("5_rnxdc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jr2ci"]
+texture = ExtResource("5_rnxdc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_djydt"]
+texture = ExtResource("8_5vecj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_khdi3"]
+texture = ExtResource("7_3wqku")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t5jma"]
+texture = ExtResource("7_3wqku")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0pim2"]
+texture = ExtResource("7_3wqku")
+
+[sub_resource type="Animation" id="Animation_8nvg8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ka2wt"]
+resource_name = "Rage quit"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x0npq"]
+_data = {
+"RESET": SubResource("Animation_8nvg8"),
+"Rage quit": SubResource("Animation_ka2wt")
+}
 
 [node name="EndUI" type="Control"]
 layout_mode = 3
@@ -26,7 +86,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("NoiseTexture2D_bgmvo")
+texture = ExtResource("2_c6g6l")
 
 [node name="RestartButton" type="Button" parent="."]
 layout_mode = 1
@@ -35,43 +95,55 @@ anchor_left = 0.437
 anchor_top = 0.528
 anchor_right = 0.562
 anchor_bottom = 0.583
-offset_left = 0.511993
-offset_top = -0.128021
-offset_right = 0.511963
-offset_bottom = 0.191956
-theme_override_styles/normal = ExtResource("2_js62w")
-theme_override_styles/hover = ExtResource("3_fpx6x")
-theme_override_styles/pressed = ExtResource("4_6ygti")
-theme_override_styles/disabled = ExtResource("2_js62w")
-theme_override_styles/focus = ExtResource("2_js62w")
+offset_left = 299.512
+offset_top = -69.128
+offset_right = 337.512
+offset_bottom = -25.808
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qgefk")
+theme_override_styles/normal = SubResource("StyleBoxTexture_x4okx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qnpl3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5rknl")
+theme_override_styles/focus = SubResource("StyleBoxTexture_jr2ci")
 text = "Back to Menu"
 clip_text = true
 
-[node name="QuitButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.437
-anchor_top = 0.625
-anchor_right = 0.562
-anchor_bottom = 0.681
-offset_left = 0.511993
-offset_top = 3.05176e-05
-offset_right = 0.511963
-offset_bottom = -0.256012
-theme_override_styles/normal = ExtResource("2_js62w")
-theme_override_styles/hover = ExtResource("3_fpx6x")
-theme_override_styles/pressed = ExtResource("4_6ygti")
-theme_override_styles/disabled = ExtResource("2_js62w")
-theme_override_styles/focus = ExtResource("2_js62w")
-text = "Quit"
-
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 208.0
-offset_right = 640.0
-offset_bottom = 260.0
+offset_left = 696.0
+offset_top = 160.0
+offset_right = 952.0
+offset_bottom = 212.0
+theme_override_fonts/font = ExtResource("3_qgefk")
 text = "Your Score: 
 Highscore: "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RageQuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.992
+anchor_top = 0.069
+anchor_right = 0.992
+anchor_bottom = 0.069
+offset_left = -255.808
+offset_top = 288.256
+offset_right = -120.808
+offset_bottom = 363.256
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qgefk")
+theme_override_styles/normal = SubResource("StyleBoxTexture_djydt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_khdi3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_t5jma")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0pim2")
+text = "Rage Quit!"
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../RageQuitButton")
+autoplay = "Rage quit"
+libraries = {
+"": SubResource("AnimationLibrary_x0npq")
+}
