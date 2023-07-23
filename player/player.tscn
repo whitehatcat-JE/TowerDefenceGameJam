@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cqaj2h0k5x558"]
+[gd_scene load_steps=29 format=3 uid="uid://cqaj2h0k5x558"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_xp17c"]
 [ext_resource type="Texture2D" uid="uid://hfjitjm2c386" path="res://main/playerAttack.png" id="2_vv2vs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://player/SwordHitbox.gd" id="3_lfrnb"]
 [ext_resource type="Script" path="res://player/Stats.gd" id="4_fmgyg"]
 [ext_resource type="Script" path="res://Tower/GV.gd" id="5_qlxj6"]
+[ext_resource type="AudioStream" uid="uid://cvid6sl4re7eh" path="res://audio/Protagonist Attack 01.mp3" id="6_f12d8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wqmnc"]
 radius = 63.0
@@ -220,7 +221,8 @@ script = ExtResource("3_lfrnb")
 position = Vector2(93.5, 0)
 shape = SubResource("RectangleShape2D_fikur")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="attackSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_f12d8")
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("4_fmgyg")

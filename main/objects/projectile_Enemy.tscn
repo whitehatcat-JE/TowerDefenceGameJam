@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://o6lrdfvkma8g"]
+
+[ext_resource type="Script" path="res://main/objects/projectileGeneric.gd" id="1_kufsb"]
+[ext_resource type="Texture2D" uid="uid://daq6h1ut81k32" path="res://main/projectileGenericTemp.png" id="2_k41h5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_86mrb"]
+
+[node name="projectileGeneric" type="Area2D"]
+modulate = Color(1, 0.211765, 0.00784314, 1)
+collision_layer = 133
+collision_mask = 133
+priority = 1
+script = ExtResource("1_kufsb")
+speed = 400.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_86mrb")
+
+[node name="projectileGenericTemp" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_k41h5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="director" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

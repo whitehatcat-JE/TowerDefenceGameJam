@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvowqvls8xre3"]
+[gd_scene load_steps=6 format=3 uid="uid://cvowqvls8xre3"]
 
-[ext_resource type="Texture2D" uid="uid://daq6h1ut81k32" path="res://main/projectileGenericTemp.png" id="1_bbc4a"]
 [ext_resource type="Script" path="res://main/objects/xp.gd" id="1_hcm6f"]
+[ext_resource type="Texture2D" uid="uid://ccxdw6yi5j76u" path="res://main/xpSprites/nut.png" id="2_k40bd"]
+[ext_resource type="Texture2D" uid="uid://cme85bs3wvu2d" path="res://main/xpSprites/screw.png" id="3_gtv0k"]
+[ext_resource type="Texture2D" uid="uid://cqgi3lav8dj27" path="res://main/xpSprites/Cog.png" id="4_pb32s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_illfp"]
 
 [node name="xp" type="Area2D"]
+modulate = Color(0.219608, 0.968627, 1, 1)
 scale = Vector2(0.5, 0.5)
 collision_layer = 16
 collision_mask = 0
@@ -14,10 +17,25 @@ script = ExtResource("1_hcm6f")
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_illfp")
 
-[node name="particle" type="Sprite2D" parent="."]
+[node name="sprite1" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("1_bbc4a")
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("2_k40bd")
+
+[node name="sprite2" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-2, -2)
+scale = Vector2(0.203125, 0.203125)
+texture = ExtResource("3_gtv0k")
+
+[node name="sprite3" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(9.53674e-07, 2.86102e-06)
+scale = Vector2(0.46875, 0.46875)
+texture = ExtResource("4_pb32s")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

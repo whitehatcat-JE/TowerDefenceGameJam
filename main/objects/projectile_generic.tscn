@@ -1,21 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfgbubkgafr6o"]
 
-[ext_resource type="Script" path="res://main/objects/projectileGeneric.gd" id="1_2x7sx"]
+[ext_resource type="Script" path="res://main/objects/projectile_generic.gd" id="1_b6wyv"]
 [ext_resource type="Texture2D" uid="uid://daq6h1ut81k32" path="res://main/projectileGenericTemp.png" id="2_5xn03"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86mrb"]
 
 [node name="projectileGeneric" type="Area2D"]
-collision_layer = 5
-collision_mask = 0
-script = ExtResource("1_2x7sx")
+collision_layer = 128
+collision_mask = 130
+script = ExtResource("1_b6wyv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_86mrb")
 
 [node name="projectileGenericTemp" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0.968627, 1)
 texture_filter = 1
-scale = Vector2(1.25, 1.25)
+position = Vector2(4.17233e-07, 2.563e-06)
+scale = Vector2(0.1875, 0.1875)
 texture = ExtResource("2_5xn03")
 
 [node name="Timer" type="Timer" parent="."]

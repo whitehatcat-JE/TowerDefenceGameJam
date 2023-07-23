@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed:float = 200.0
+@export var speed:float = 200.0
 var explodeRange:float = 10.0
 var damageAmt:int = 1
 var target:Vector2
@@ -16,7 +16,8 @@ func _physics_process(delta):
 	position += (director.global_position - position) * speed * delta
 
 func _on_body_entered(body):
-	body.damage(damageAmt)
+	if body.has_method("damage"):
+		body.damage(damageAmt)
 	die()
 
 func _on_timer_timeout():

@@ -14,6 +14,6 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 func set_score_label():
-	var scoretext= "Score: " + String.num(Stats.get_score()) + "\n" 
-	scoretext += "High Score: " + String.num(Stats.get_highscore())
+	var scoretext= "Score: " + String.num(Stats.get_score() * 100) + "\n" 
+	scoretext += "High Score: " + String.num(Stats.get_highscore() * 100)
 	$ScoreLabel.set_text(scoretext)

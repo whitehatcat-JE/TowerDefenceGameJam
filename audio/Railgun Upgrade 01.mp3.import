@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://df3d6w3fu7aj4"
+path="res://.godot/imported/Railgun Upgrade 01.mp3-416d3c7ab2ba39825798e766aac3fa60.mp3str"
+
+[deps]
+
+source_file="res://audio/Railgun Upgrade 01.mp3"
+dest_files=["res://.godot/imported/Railgun Upgrade 01.mp3-416d3c7ab2ba39825798e766aac3fa60.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://num466ts4od5"
+path="res://.godot/imported/Tower Minigun Shot 01.mp3-34b53220bef5aa6e050f7a41847cddaf.mp3str"
+
+[deps]
+
+source_file="res://audio/Tower Minigun Shot 01.mp3"
+dest_files=["res://.godot/imported/Tower Minigun Shot 01.mp3-34b53220bef5aa6e050f7a41847cddaf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

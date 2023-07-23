@@ -26,8 +26,9 @@ func die():
 	$healthbarPivot/enemySpriteLeft.visible = false
 	$healthbarPivot/enemySpriteRight.visible = false
 	$healthbarPivot/underHealth.visible = false
+	$healthbarPivot/overHealth.visible = false
 	$hitbox.set_deferred("disabled", true)
-	Stats.add_score(xpAmt)
+	Stats.add_score(xpAmt * 3)
 	Stats.add_score(1)
 	for xpIdx in range(xpAmt * 5 if playerDamaged else 1):
 		GV.xpQueue.append(self.global_position)

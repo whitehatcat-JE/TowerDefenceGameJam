@@ -16,14 +16,17 @@ var playerDamaged:bool = false
 @onready var director:Node = $enemyPivot/enemyDirector
 
 @onready var indicatorDamage = preload("res://main/objects/DamageIndicator.tscn")
+@onready var bulletScene = preload("res://main/objects/projectile_Enemy.tscn")
 @export var effectHit: PackedScene = null
 @export var effectDied: PackedScene = null
 
 func die():
 	dead = true
+	$bulletTimer.stop()
 	$healthbarPivot/explosionSprite.play("explosion")
 	$enemySprite.visible = false
 	$healthbarPivot/underHealth.visible = false
+	$healthbarPivot/overHealth.visible = false
 	$hitbox.set_deferred("disabled", true)
 	Stats.add_score(xpAmt)
 	Stats.add_score(1)
@@ -34,6 +37,8 @@ func die():
 func _physics_process(delta):
 	if dead: return;
 	if global_position.distance_to(target) < explodeRange:
+		if $bulletTimer.is_stopped():
+			$bulletTimer.start()
 		return
 	look_at(target)
 	rotation_degrees += 90
@@ -65,3 +70,10 @@ func spawnDmgIndicator(dmg: int):
 
 func _on_explosion_sprite_animation_finished():
 	queue_free()
+
+
+func _on_bullet_timer_timeout():
+	var newBullet:Node = bulletScene.instantiate()
+	get_parent().add_child(newBullet)
+	newBullet.global_position = $enemySprite/projectile.global_position
+	newBullet.target = target

@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://d228jnajkcqxe"]
+[gd_scene load_steps=23 format=3 uid="uid://d228jnajkcqxe"]
 
-[ext_resource type="StyleBox" uid="uid://bp8k6o2mxjupy" path="res://UI/UILightGray.stylebox" id="1_b3mgw"]
+[ext_resource type="StyleBox" path="res://UI/UILightGray.stylebox" id="1_b3mgw"]
 [ext_resource type="Script" path="res://UI/MenuUI.gd" id="1_xonby"]
 [ext_resource type="Texture2D" uid="uid://dwr0atc4l44hu" path="res://UI/UI-Button.png" id="4_sn72e"]
 [ext_resource type="Texture2D" uid="uid://8j6ww61p7a8f" path="res://UI/Button-blue-darker.png" id="5_rjmaq"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://d0vgc4x7rhjr7" path="res://UI/button-red-darker.png" id="8_xeli7"]
 [ext_resource type="Texture2D" uid="uid://bvq7834uhcgcg" path="res://UI/lill-skull-guy-run-spritesheet-v1.png" id="9_7d8xb"]
 [ext_resource type="Texture2D" uid="uid://7smlqaouy0dk" path="res://UI/bugbot-brute-sprite-v1.png" id="10_i8iy5"]
+[ext_resource type="Texture2D" uid="uid://dyga8x1y35e2i" path="res://UI/Title.png" id="13_pfb5r"]
+[ext_resource type="AudioStream" uid="uid://bs2v7f80yu11u" path="res://audio/Kiwijam Menu Music Loop.mp3" id="14_ll58n"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cbyxj"]
 texture = ExtResource("4_sn72e")
@@ -113,17 +115,6 @@ theme_override_fonts/font = ExtResource("6_qmx75")
 text = "Highscore: 0"
 vertical_alignment = 1
 
-[node name="TextEdit" type="TextEdit" parent="."]
-layout_mode = 0
-offset_left = 644.0
-offset_top = 68.0
-offset_right = 907.0
-offset_bottom = 150.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_qmx75")
-theme_override_font_sizes/font_size = 48
-text = "Insectoid"
-
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(691, 244)
 scale = Vector2(-0.3, 0.3)
@@ -150,3 +141,12 @@ position = Vector2(709, 378)
 rotation = 0.174533
 scale = Vector2(0.5, 0.55)
 texture = ExtResource("10_i8iy5")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(741, 136)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("13_pfb5r")
+
+[node name="mainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ll58n")
+autoplay = true

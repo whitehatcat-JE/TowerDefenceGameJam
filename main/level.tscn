@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgf7pwuv337sv"]
+[gd_scene load_steps=13 format=3 uid="uid://dgf7pwuv337sv"]
 
 [ext_resource type="Script" path="res://main/level.gd" id="1_clrrc"]
 [ext_resource type="Script" path="res://main/tower.gd" id="2_2sm2v"]
 [ext_resource type="Script" path="res://main/empAttack.gd" id="3_fpgdu"]
+[ext_resource type="Script" path="res://main/towerCollisions.gd" id="3_l3b3u"]
 [ext_resource type="Texture2D" uid="uid://s8xmveoi4gg0" path="res://Tower/EMP Wave.png" id="4_kyicb"]
 [ext_resource type="PackedScene" uid="uid://cqaj2h0k5x558" path="res://player/player.tscn" id="5_b521d"]
+[ext_resource type="AudioStream" uid="uid://beob0xnkbkpff" path="res://audio/Kiwijam Main Music Loop.mp3" id="7_kgg0s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m23h"]
 size = Vector2(60, 60)
@@ -12,21 +14,6 @@ size = Vector2(60, 60)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iqa8e"]
 radius = 92.0
 height = 184.0
-
-[sub_resource type="Animation" id="Animation_llku4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("empAttack/Sprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_b6qbd"]
 resource_name = "emp"
@@ -70,7 +57,6 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q03fj"]
 _data = {
-"RESET": SubResource("Animation_llku4"),
 "emp": SubResource("Animation_b6qbd")
 }
 
@@ -80,11 +66,16 @@ size = Vector2(30, 2853)
 [node name="level" type="Node2D"]
 script = ExtResource("1_clrrc")
 
+[node name="budgetIncreasor" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
 [node name="tower" type="Node2D" parent="."]
 position = Vector2(559, 302)
 script = ExtResource("2_2sm2v")
 
 [node name="towerCollisions" type="StaticBody2D" parent="tower"]
+script = ExtResource("3_l3b3u")
 
 [node name="hitbox" type="CollisionShape2D" parent="tower/towerCollisions"]
 shape = SubResource("RectangleShape2D_2m23h")
@@ -96,12 +87,12 @@ offset_right = 20.0
 offset_bottom = 20.0
 
 [node name="empAttack" type="Area2D" parent="tower"]
-scale = Vector2(0.979659, 0.979659)
 collision_mask = 2
 monitorable = false
 script = ExtResource("3_fpgdu")
 
 [node name="Sprite2D" type="Sprite2D" parent="tower/empAttack"]
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(5.34058e-05, 5.19753e-05)
 scale = Vector2(0.518956, 0.521847)
 texture = ExtResource("4_kyicb")
@@ -110,18 +101,18 @@ texture = ExtResource("4_kyicb")
 visible = false
 shape = SubResource("CapsuleShape2D_iqa8e")
 
-[node name="attackAnims" type="AnimationPlayer" parent="tower"]
-autoplay = "emp"
+[node name="empAnim" type="AnimationPlayer" parent="tower"]
 libraries = {
 "": SubResource("AnimationLibrary_q03fj")
 }
 
 [node name="waveTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="healingTimer" type="Timer" parent="."]
+wait_time = 0.2
 autostart = true
 
 [node name="enemyTimer" type="Timer" parent="."]
@@ -173,6 +164,11 @@ position = Vector2(773, 1149)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_2fihn")
 
+[node name="mainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kgg0s")
+autoplay = true
+
+[connection signal="timeout" from="budgetIncreasor" to="." method="_on_budget_increasor_timeout"]
 [connection signal="body_entered" from="tower/empAttack" to="tower/empAttack" method="_on_body_entered"]
 [connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="healingTimer" to="tower" method="towerHealing"]

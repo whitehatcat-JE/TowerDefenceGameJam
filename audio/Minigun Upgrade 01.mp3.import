@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dm4sjy50rc6cl"
+path="res://.godot/imported/Minigun Upgrade 01.mp3-7014056059630fb33b9a37beed7c04d7.mp3str"
+
+[deps]
+
+source_file="res://audio/Minigun Upgrade 01.mp3"
+dest_files=["res://.godot/imported/Minigun Upgrade 01.mp3-7014056059630fb33b9a37beed7c04d7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

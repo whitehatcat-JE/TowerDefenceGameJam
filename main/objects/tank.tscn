@@ -105,7 +105,6 @@ animations = [{
 scale = Vector2(2, 2)
 collision_layer = 2
 script = ExtResource("1_fojxh")
-healthMax = 5.0
 speed = 20.0
 explodeRange = 50.0
 damageAmt = 3
