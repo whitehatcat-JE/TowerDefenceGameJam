@@ -74,5 +74,5 @@ func _on_explosion_sprite_animation_finished():
 	queue_free()
 
 func _on_explosion_timer_timeout():
-	GV.health -= damageAmt
+	GV.change_health(-damageAmt)
 	die()

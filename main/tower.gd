@@ -65,5 +65,5 @@ func attackEnemy():
 
 func towerHealing():
 	if GV.curPlayerLoc.distance_to(global_position) < 100:
-		if GV.health != GV.startingHealth:
-			GV.health += 1
+		if GV.get_health() != GV.startingHealth:
+			GV.change_health(1)
