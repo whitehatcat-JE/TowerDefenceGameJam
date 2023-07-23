@@ -2,7 +2,7 @@ extends Control
 
 func _ready():
 	# One-time Score setup
-	$HighscoreLabel.set_text("Highscore: " + String.num(Stats.get_highscore()))
+	$HighscoreLabel.set_text("Highscore: " + String.num(Stats.get_highscore() * 100))
 	# Connect signals
 	$StartButton.pressed.connect(_on_start_button_pressed)
 	$QuitButton.pressed.connect(_on_quit_button_pressed)
