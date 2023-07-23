@@ -10,9 +10,11 @@ var target:Vector2
 func die():
 	queue_free()
 
-func _physics_process(delta):
+func align_self():
 	look_at(target)
 	rotation_degrees += 90
+
+func _physics_process(delta):
 	position += (director.global_position - position) * speed * delta
 
 func _on_body_entered(body):

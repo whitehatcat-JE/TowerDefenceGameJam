@@ -4,7 +4,7 @@ extends Node2D
 var enemyValues = [ # Temp values
 	["rookie", 1],
 	["leader", 2],
-	["mafiaBoss", 3]
+	["mafiaBoss", 5]
 ]
 
 
@@ -16,8 +16,8 @@ var enemyValues = [ # Temp values
 }
 @onready var xp = preload("res://main/objects/xp.tscn")
 
-var waveBudget:int = 50
-var spawnDelay:float = 1.0
+var waveBudget:int = 5
+var spawnDelay:float = 1.5
 
 @onready var playerLoc:Vector2 = $Player.position
 
@@ -29,6 +29,9 @@ var spawnDelay:float = 1.0
 
 @onready var waveTimer = %waveTimer
 @onready var cam = %camera2D
+
+func _ready():
+	_on_wave_timer_timeout()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -66,3 +69,6 @@ func spawnXp(enemyPos):
 	var newXp = xp.instantiate()
 	self.add_child(newXp)
 	newXp.global_position = enemyPos + Vector2(randf_range(-10, 10), randf_range(-10, 10))
+
+func _on_budget_increasor_timeout():
+	waveBudget += 1

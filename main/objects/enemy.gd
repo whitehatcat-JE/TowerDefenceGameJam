@@ -26,6 +26,7 @@ func die():
 	$healthbarPivot/enemySpriteLeft.visible = false
 	$healthbarPivot/enemySpriteRight.visible = false
 	$healthbarPivot/underHealth.visible = false
+	$healthbarPivot/overHealth.visible = false
 	$hitbox.set_deferred("disabled", true)
 	Stats.add_score(xpAmt)
 	Stats.add_score(1)
