@@ -1,11 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://8q6ovcg2jcc4"]
+[gd_scene load_steps=12 format=3 uid="uid://8q6ovcg2jcc4"]
 
 [ext_resource type="Script" path="res://UI/GameUI.gd" id="1_edb48"]
 [ext_resource type="StyleBox" uid="uid://bxaxtua03o8bv" path="res://UI/UIGrey.stylebox" id="1_ufxl4"]
 [ext_resource type="StyleBox" uid="uid://di38j2ynj3agl" path="res://UI/UIRed.stylebox" id="2_wnhax"]
 [ext_resource type="StyleBox" uid="uid://blmu7r5fy7g41" path="res://UI/UIGreen.tres" id="3_crekm"]
-[ext_resource type="StyleBox" uid="uid://bp8k6o2mxjupy" path="res://UI/UILightGray.stylebox" id="5_t53ag"]
-[ext_resource type="StyleBox" uid="uid://dpcai1ghlgd3s" path="res://UI/UIHover.stylebox" id="6_eistq"]
+[ext_resource type="FontFile" uid="uid://cf1vryjtx8kj0" path="res://main/objects/ALGER.TTF" id="4_j7j2p"]
+[ext_resource type="Texture2D" uid="uid://k6xet0raedtd" path="res://UI/Red-Rage-quit-UI-button.png" id="5_0fa8w"]
+[ext_resource type="Texture2D" uid="uid://d0vgc4x7rhjr7" path="res://UI/button-red-darker.png" id="7_ka5np"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_enf5o"]
+texture = ExtResource("5_0fa8w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icvn6"]
+texture = ExtResource("7_ka5np")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wuojs"]
+texture = ExtResource("7_ka5np")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iwnq0"]
+texture = ExtResource("7_ka5np")
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -41,6 +54,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_j7j2p")
 text = "0/0
 "
 horizontal_alignment = 1
@@ -74,6 +88,7 @@ offset_right = 20.0
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_j7j2p")
 text = "0/0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -85,17 +100,18 @@ anchor_left = 0.992
 anchor_top = 0.069
 anchor_right = 0.992
 anchor_bottom = 0.069
-offset_left = -45.808
-offset_top = 0.255997
-offset_right = 0.191956
-offset_bottom = 32.256
+offset_left = 334.192
+offset_top = 35.256
+offset_right = 467.192
+offset_bottom = 111.256
 grow_horizontal = 0
-theme_override_styles/normal = ExtResource("5_t53ag")
-theme_override_styles/hover = ExtResource("6_eistq")
-theme_override_styles/pressed = ExtResource("1_ufxl4")
-theme_override_styles/disabled = ExtResource("5_t53ag")
-theme_override_styles/focus = ExtResource("5_t53ag")
-text = "Give Up"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_enf5o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_icvn6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wuojs")
+theme_override_styles/focus = SubResource("StyleBoxTexture_iwnq0")
+text = "Rage Quit!"
+clip_text = true
 
 [node name="ScoreLabel" type="Label" parent="."]
 visible = false
