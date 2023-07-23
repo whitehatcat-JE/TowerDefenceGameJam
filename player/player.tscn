@@ -199,7 +199,6 @@ sprite_frames = SubResource("SpriteFrames_bc0jd")
 animation = &"sweep"
 autoplay = "idle"
 frame = 3
-frame_progress = 1.0
 
 [node name="xpCollisionField" type="Area2D" parent="playerSprite"]
 scale = Vector2(2, 2)

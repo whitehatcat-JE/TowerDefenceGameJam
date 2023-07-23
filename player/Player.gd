@@ -27,9 +27,10 @@ func _process(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		if $playerSprite.animation == "walk":
 			$playerSprite.play("idle")
+
 	if velocity.x > 0:
 		$playerSprite.scale.x = 0.5
-	else:
+	elif velocity.x < 0:
 		$playerSprite.scale.x = -0.5
 	move()
 	
