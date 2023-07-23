@@ -11,6 +11,8 @@ func update_health_bar(currentHealth:float, maxHealth:float):
 	$HealthBar.set_max(maxHealth)
 	$HealthBar.set_value(currentHealth)
 	$HealthBar/Label.set_text(String.num(currentHealth,0)+"/"+String.num(maxHealth,0))
+	if currentHealth <= 0:
+		get_tree().change_scene_to_file("res://UI/EndUI.tscn")
 
 func _process(delta):
 	update_xp_bar(GV.xp, GV.xpThreshold)
@@ -30,8 +32,8 @@ func debug_rand_change():
 	update_xp_bar(cX,mX)
 
 func on_score_updated():
-	var scoretext= "Score: " + String.num(Stats.get_score()) + "\n" 
-	scoretext += "High Score: " + String.num(Stats.get_highscore())
+	var scoretext= "Score: " + String.num(Stats.get_score() * 100) + "\n" 
+	scoretext += "High Score: " + String.num(Stats.get_highscore() * 100)
 	$ScoreLabel.set_text(scoretext)
 
 func _on_rage_quit_button_pressed():

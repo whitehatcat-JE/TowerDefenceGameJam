@@ -3,7 +3,7 @@ extends Node
 var enemies:Array = []
 
 
-var startingHealth:int = 100
+var startingHealth:int = 1
 var health:int = startingHealth
 
 var xp:int = 0
