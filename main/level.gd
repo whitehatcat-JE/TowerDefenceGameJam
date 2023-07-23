@@ -11,8 +11,8 @@ var enemyValues = [ # Temp values
 
 @onready var enemies:Dictionary = {
 	"rookie":preload("res://main/objects/enemy.tscn"),
-	"leader":preload("res://main/objects/enemy.tscn"),
-	"mafiaBoss":preload("res://main/objects/enemy.tscn")
+	"leader":preload("res://main/objects/bug.tscn"),
+	"mafiaBoss":preload("res://main/objects/tank.tscn")
 }
 @onready var xp = preload("res://main/objects/xp.tscn")
 
@@ -33,6 +33,8 @@ var spawnDelay:float = 1.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	playerLoc = $Player.position
+	while len(GV.xpQueue) > 0:
+		spawnXp(GV.xpQueue.pop_front())
 
 func spawnHandler(enemyType):
 	for recursionDepth in range(250): # Prevents recursion issues
@@ -60,5 +62,7 @@ func _on_wave_timer_timeout():
 		await get_tree().create_timer(spawnDelay).timeout
 	waveTimer.start()
 
-func spawnXp(enemyName):
-	print(enemyName)	
+func spawnXp(enemyPos):
+	var newXp = xp.instantiate()
+	self.add_child(newXp)
+	newXp.global_position = enemyPos + Vector2(randf_range(-10, 10), randf_range(-10, 10))

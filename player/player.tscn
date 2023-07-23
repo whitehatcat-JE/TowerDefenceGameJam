@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqaj2h0k5x558"]
+[gd_scene load_steps=28 format=3 uid="uid://cqaj2h0k5x558"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_xp17c"]
 [ext_resource type="Texture2D" uid="uid://hfjitjm2c386" path="res://main/playerAttack.png" id="2_vv2vs"]
 [ext_resource type="Texture2D" uid="uid://dvoj286yp04n5" path="res://main/attackSweep.png" id="3_b06pq"]
+[ext_resource type="Texture2D" uid="uid://bllrh81tw81le" path="res://main/playerWalk.png" id="3_hqjjq"]
 [ext_resource type="Script" path="res://player/SwordHitbox.gd" id="3_lfrnb"]
 [ext_resource type="Script" path="res://player/Stats.gd" id="4_fmgyg"]
 [ext_resource type="Script" path="res://Tower/GV.gd" id="5_qlxj6"]
@@ -31,6 +32,22 @@ region = Rect2(0, 256, 256, 256)
 atlas = ExtResource("2_vv2vs")
 region = Rect2(0, 0, 256, 256)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0aqib"]
+atlas = ExtResource("3_hqjjq")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qu0f"]
+atlas = ExtResource("3_hqjjq")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7isaf"]
+atlas = ExtResource("3_hqjjq")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yb4n"]
+atlas = ExtResource("3_hqjjq")
+region = Rect2(256, 256, 256, 256)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_a2dr8"]
 animations = [{
 "frames": [{
@@ -57,6 +74,23 @@ animations = [{
 "loop": false,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0aqib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qu0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7isaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yb4n")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iqo1t"]

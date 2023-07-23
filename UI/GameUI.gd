@@ -12,6 +12,10 @@ func update_health_bar(currentHealth:float, maxHealth:float):
 	$HealthBar.set_value(currentHealth)
 	$HealthBar/Label.set_text(String.num(currentHealth,0)+"/"+String.num(maxHealth,0))
 
+func _process(delta):
+	update_xp_bar(GV.xp, GV.xpThreshold)
+	update_health_bar(GV.health, GV.startingHealth)
+
 func update_xp_bar(currentXP:float, maxXP:float):
 	$XPBar.set_max(maxXP)
 	$XPBar.set_value(currentXP)

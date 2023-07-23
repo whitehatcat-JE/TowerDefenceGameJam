@@ -19,10 +19,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	
-	if GV.xp > xp_threshold:
-		GV.xp -= xp_threshold
+	if GV.xp > GV.xpThreshold:
+		GV.xp -= GV.xpThreshold
 		levelUp()
 
 func levelUp():

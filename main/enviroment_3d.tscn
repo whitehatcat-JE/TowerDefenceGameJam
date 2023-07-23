@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccnt5f231dw6d"]
+[gd_scene load_steps=12 format=3 uid="uid://ccnt5f231dw6d"]
 
 [ext_resource type="Script" path="res://main/enviroment_3d.gd" id="1_t2shv"]
 [ext_resource type="PackedScene" uid="uid://dgf7pwuv337sv" path="res://main/level.tscn" id="2_bjcbj"]
 [ext_resource type="ArrayMesh" uid="uid://div1guv8g4vv3" path="res://main/Terrain.obj" id="2_bxunh"]
 [ext_resource type="ArrayMesh" uid="uid://dgdytpq3ejngx" path="res://main/TowerBoi.obj" id="2_eid18"]
+[ext_resource type="PackedScene" uid="uid://8q6ovcg2jcc4" path="res://UI/GameUI.tscn" id="5_56gkc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ac3fk"]
 albedo_color = Color(0.501961, 0.0352941, 0.0235294, 1)
@@ -85,6 +86,8 @@ environment = SubResource("Environment_xpkox")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.7456, 0)
+
+[node name="GameUI" parent="." instance=ExtResource("5_56gkc")]
 
 [connection signal="plrAttack" from="levelViewport/level/Player" to="." method="_on_player_plr_attack"]
 

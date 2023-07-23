@@ -21,10 +21,8 @@ var playerDamaged:bool = false
 
 func die():
 	dead = true
-	$explosionTimer.stop()
 	$healthbarPivot/explosionSprite.play("explosion")
-	$healthbarPivot/enemySpriteLeft.visible = false
-	$healthbarPivot/enemySpriteRight.visible = false
+	$enemySprite.visible = false
 	$healthbarPivot/underHealth.visible = false
 	$hitbox.set_deferred("disabled", true)
 	Stats.add_score(xpAmt)
@@ -35,16 +33,12 @@ func die():
 
 func _physics_process(delta):
 	if dead: return;
-	if global_position.distance_to(target) < explodeRange and $explosionTimer.is_stopped():
-		$explosionTimer.start()
+	if global_position.distance_to(target) < explodeRange:
+		return
 	look_at(target)
 	rotation_degrees += 90
 	$healthbarPivot.global_rotation = 0
 	velocity = (director.global_position - position) * speed
-	$healthbarPivot/enemySpriteLeft.visible = false
-	$healthbarPivot/enemySpriteRight.visible = false
-	if velocity.x > 0: $healthbarPivot/enemySpriteRight.visible = true
-	else: $healthbarPivot/enemySpriteLeft.visible = true
 	move_and_slide()
 
 func damage(amt:float):
@@ -71,7 +65,3 @@ func spawnDmgIndicator(dmg: int):
 
 func _on_explosion_sprite_animation_finished():
 	queue_free()
-
-func _on_explosion_timer_timeout():
-	GV.health -= damageAmt
-	die()

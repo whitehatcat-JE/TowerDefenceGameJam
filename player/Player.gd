@@ -20,8 +20,12 @@ func _process(delta):
 	
 	if ip != Vector2.ZERO:
 		velocity = velocity.move_toward(ip * maxSpeed, acceleration * delta)
+		if $playerSprite.animation == "idle":
+			$playerSprite.play("walk")
 	else: 
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+		if $playerSprite.animation == "walk":
+			$playerSprite.play("idle")
 	if velocity.x > 0:
 		$playerSprite.scale.x = 0.5
 	else:
