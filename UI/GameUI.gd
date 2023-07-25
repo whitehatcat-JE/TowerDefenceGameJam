@@ -14,23 +14,18 @@ func _ready():
 	$RageQuitButton.pressed.connect(_on_rage_quit_button_pressed)
 
 func _process(delta):
-	if(!game_over):
-		update_xp_bar(GV.xp, GV.xpThreshold)
-		update_health_bar(GV.get_health(), GV.startingHealth)
-		if(GV.get_health() <= 0):
-			game_over = true
-	else:
-		fade_time += delta
-		$FadeRect.modulate.a = fade_time/fade_length
-		if(fade_time >= fade_length):
-			get_tree().change_scene_to_file("res://UI/EndUI.tscn")
+	update_xp_bar(GV.xp, GV.xpThreshold)
+	update_health_bar(GV.get_health(), GV.startingHealth)
+	
+	if GV.justDamaged:
+		$damageAnim.play("damage")
+		GV.justDamaged = false
 
 func update_health_bar(currentHealth:float, maxHealth:float):
+	if currentHealth < 0: currentHealth = 0
 	$HealthBar.set_max(maxHealth)
 	$HealthBar.set_value(currentHealth)
 	$HealthBar/Label.set_text(String.num(currentHealth,0)+"/"+String.num(maxHealth,0))
-	if currentHealth <= 0:
-		get_tree().change_scene_to_file("res://UI/EndUI.tscn")
 
 func update_xp_bar(currentXP:float, maxXP:float):
 	$XPBar.set_max(maxXP)
@@ -53,3 +48,4 @@ func on_score_updated():
 func _on_rage_quit_button_pressed():
 	#Load End Screen
 	game_over = true
+

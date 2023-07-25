@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d228jnajkcqxe"]
+[gd_scene load_steps=36 format=3 uid="uid://d228jnajkcqxe"]
 
 [ext_resource type="StyleBox" uid="uid://bp8k6o2mxjupy" path="res://UI/UILightGray.stylebox" id="1_b3mgw"]
 [ext_resource type="Script" path="res://UI/MenuUI.gd" id="1_xonby"]
@@ -10,10 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://k6xet0raedtd" path="res://UI/Red-Rage-quit-UI-button.png" id="8_3mq2r"]
 [ext_resource type="Texture2D" uid="uid://cn35ujayksqs8" path="res://UI/bugbot-drone-v1.png" id="8_5umu5"]
 [ext_resource type="Texture2D" uid="uid://d0vgc4x7rhjr7" path="res://UI/button-red-darker.png" id="8_xeli7"]
-[ext_resource type="Texture2D" uid="uid://bvq7834uhcgcg" path="res://UI/lill-skull-guy-run-spritesheet-v1.png" id="9_7d8xb"]
 [ext_resource type="Texture2D" uid="uid://7smlqaouy0dk" path="res://UI/bugbot-brute-sprite-v1.png" id="10_i8iy5"]
+[ext_resource type="Texture2D" uid="uid://bllrh81tw81le" path="res://main/playerWalk.png" id="11_ar1fn"]
 [ext_resource type="Texture2D" uid="uid://dyga8x1y35e2i" path="res://UI/Title.png" id="13_pfb5r"]
 [ext_resource type="AudioStream" uid="uid://bs2v7f80yu11u" path="res://audio/Kiwijam Menu Music Loop.mp3" id="14_ll58n"]
+[ext_resource type="PackedScene" uid="uid://c44eavgyr53au" path="res://UI/EndUI.tscn" id="15_sytd5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cbyxj"]
 texture = ExtResource("4_sn72e")
@@ -39,6 +40,354 @@ texture = ExtResource("8_xeli7")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p2a52"]
 texture = ExtResource("8_xeli7")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaeua"]
+atlas = ExtResource("11_ar1fn")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35apr"]
+atlas = ExtResource("11_ar1fn")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6av5"]
+atlas = ExtResource("11_ar1fn")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpqg3"]
+atlas = ExtResource("11_ar1fn")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62e6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaeua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35apr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6av5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpqg3")
+}],
+"loop": true,
+"name": &"slowWalk",
+"speed": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_wo1qx"]
+resource_name = "enter"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1969, 364), Vector2(1419, 364)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QuitButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector2(1969, 530), Vector2(1969, 530), Vector2(1422, 530)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HighscoreLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("player:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(-113, 639), Vector2(291, 639)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("chungus:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.4),
+"transitions": PackedFloat32Array(1, 0.574349, 1),
+"update": 0,
+"values": [Vector2(1131, 538), Vector2(1131, 538), Vector2(913, 620)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("chungus:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("player:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("bugA:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.7),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector2(1003, 337), Vector2(1003, 337), Vector2(891, 425)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("bugA:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.7),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("bugB:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.9),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector2(1225, 386), Vector2(1225, 386), Vector2(1094.65, 437.771)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("bugB:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.9),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1.19209e-07), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("droneA:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.3),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector2(1086, 237), Vector2(1086, 237), Vector2(1086, 319)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("droneA:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.3),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jysfo"]
+resource_name = "float"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bugA:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2.63902, 1),
+"update": 0,
+"values": [Vector2(891, 425), Vector2(891, 415)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("droneA:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1086, 319), Vector2(1086, 330)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bugB:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1094.65, 437.771), Vector2(1084.65, 437.771)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("chungus:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [0.174533, 0.299924]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("player:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(291, 639), Vector2(291, 609)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gk67p"]
+_data = {
+"enter": SubResource("Animation_wo1qx"),
+"float": SubResource("Animation_jysfo")
+}
+
+[sub_resource type="Animation" id="Animation_gmb5r"]
+resource_name = "pulse"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.701961)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_02jsa"]
+_data = {
+"pulse": SubResource("Animation_gmb5r")
+}
+
+[sub_resource type="Animation" id="Animation_iqr67"]
+resource_name = "fadeOut"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fadeRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"startGame"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7nwh"]
+_data = {
+"fadeOut": SubResource("Animation_iqr67")
+}
+
 [node name="MenuUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -48,11 +397,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xonby")
 
+[node name="fadeRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+layout_mode = 0
+offset_right = 1946.0
+offset_bottom = 1084.0
+color = Color(0, 0, 0, 1)
+
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -3
 layout_mode = 0
-offset_right = 1024.0
-offset_bottom = 576.0
+offset_left = -11.0
+offset_top = -6.0
+offset_right = 1922.0
+offset_bottom = 1081.0
 texture = ExtResource("5_waxnq")
 
 [node name="StartButton" type="Button" parent="."]
@@ -62,21 +421,21 @@ anchor_left = 0.359
 anchor_top = 0.667
 anchor_right = 0.641
 anchor_bottom = 0.731
-offset_left = 335.384
-offset_top = 32.808
-offset_right = 330.616
-offset_bottom = 75.944
+offset_left = 729.72
+offset_top = -356.36
+offset_right = 450.239
+offset_bottom = -283.48
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.0117647, 0, 0.258824, 1)
 theme_override_fonts/font = ExtResource("6_qmx75")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxTexture_cbyxj")
 theme_override_styles/hover = SubResource("StyleBoxTexture_jvj2b")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_d4r83")
 theme_override_styles/disabled = ExtResource("1_b3mgw")
 theme_override_styles/focus = SubResource("StyleBoxTexture_1iwaw")
-text = "Click here to Start"
+text = "Start"
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 1
@@ -85,14 +444,15 @@ anchor_left = 0.969
 anchor_top = 0.944
 anchor_right = 0.969
 anchor_bottom = 0.944
-offset_left = -99.256
-offset_top = -34.744
-offset_right = -11.256
-offset_bottom = 17.256
+offset_left = -438.48
+offset_top = -489.52
+offset_right = -176.476
+offset_bottom = -347.52
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.258824, 0, 0.192157, 1)
 theme_override_fonts/font = ExtResource("6_qmx75")
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxTexture_adc7j")
 theme_override_styles/hover = SubResource("StyleBoxTexture_6e7ln")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_mbw0h")
@@ -107,46 +467,77 @@ anchor_left = 0.359
 anchor_top = 0.75
 anchor_right = 0.641
 anchor_bottom = 0.806
-offset_left = 341.384
-offset_top = 84.0
-offset_right = 340.616
-offset_bottom = 83.744
+offset_left = 481.72
+offset_top = -94.0
+offset_right = 717.28
+offset_bottom = -94.48
 theme_override_fonts/font = ExtResource("6_qmx75")
+theme_override_font_sizes/font_size = 48
 text = "Highscore: 0"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(691, 244)
-scale = Vector2(-0.3, 0.3)
+[node name="bugA" type="Sprite2D" parent="."]
+position = Vector2(891, 425)
+scale = Vector2(-0.378213, 0.378213)
 texture = ExtResource("7_gqhpw")
 
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(763, 219)
+[node name="droneA" type="Sprite2D" parent="."]
+position = Vector2(1086, 319)
 rotation = 3.14159
-scale = Vector2(-0.3, -0.3)
+scale = Vector2(-0.529426, -0.529426)
 texture = ExtResource("8_5umu5")
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(765, 272)
-scale = Vector2(-0.3, 0.3)
+[node name="bugB" type="Sprite2D" parent="."]
+position = Vector2(1094.65, 437.771)
+scale = Vector2(-0.560711, 0.560711)
 texture = ExtResource("7_gqhpw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(269, 434)
+[node name="player" type="AnimatedSprite2D" parent="."]
+position = Vector2(291, 639)
 scale = Vector2(0.59, 0.5)
-texture = ExtResource("9_7d8xb")
+sprite_frames = SubResource("SpriteFrames_62e6c")
+animation = &"slowWalk"
+autoplay = "slowWalk"
+frame_progress = 0.693298
 
-[node name="Sprite2D5" type="Sprite2D" parent="."]
-position = Vector2(709, 378)
+[node name="chungus" type="Sprite2D" parent="."]
+position = Vector2(913, 620)
 rotation = 0.174533
-scale = Vector2(0.5, 0.55)
+scale = Vector2(0.997377, 1.09711)
 texture = ExtResource("10_i8iy5")
 
 [node name="Title" type="Sprite2D" parent="."]
-position = Vector2(741, 136)
-scale = Vector2(0.75, 0.75)
+position = Vector2(1533, 211)
+scale = Vector2(1.1875, 1.1875)
 texture = ExtResource("13_pfb5r")
 
 [node name="mainMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("14_ll58n")
+volume_db = -5.0
 autoplay = true
+
+[node name="EndUI" parent="." instance=ExtResource("15_sytd5")]
+z_index = 1
+layout_mode = 1
+
+[node name="entryAnim" type="AnimationPlayer" parent="."]
+autoplay = "enter"
+libraries = {
+"": SubResource("AnimationLibrary_gk67p")
+}
+
+[node name="titleAnim" type="AnimationPlayer" parent="."]
+autoplay = "pulse"
+libraries = {
+"": SubResource("AnimationLibrary_02jsa")
+}
+
+[node name="fadeAnim" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_k7nwh")
+}
+
+[connection signal="animation_finished" from="entryAnim" to="." method="_on_entry_anim_animation_finished"]

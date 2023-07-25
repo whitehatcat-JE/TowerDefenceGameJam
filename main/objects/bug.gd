@@ -27,6 +27,8 @@ func die():
 	$enemySprite.visible = false
 	$healthbarPivot/underHealth.visible = false
 	$healthbarPivot/overHealth.visible = false
+	if randf() > 0.5: $explosionASFX.play();
+	else: $explosionBSFX.play();
 	$hitbox.set_deferred("disabled", true)
 	Stats.add_score(xpAmt)
 	Stats.add_score(1)

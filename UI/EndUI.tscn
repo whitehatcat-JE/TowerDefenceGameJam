@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c44eavgyr53au"]
+[gd_scene load_steps=21 format=3 uid="uid://c44eavgyr53au"]
 
 [ext_resource type="Script" path="res://UI/EndUI.gd" id="1_clk3l"]
 [ext_resource type="Texture2D" uid="uid://biyv6itj3flb2" path="res://UI/TitleScreenBackGround.jpg" id="2_c6g6l"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://8j6ww61p7a8f" path="res://UI/Button-blue-darker.png" id="5_rnxdc"]
 [ext_resource type="Texture2D" uid="uid://d0vgc4x7rhjr7" path="res://UI/button-red-darker.png" id="7_3wqku"]
 [ext_resource type="Texture2D" uid="uid://k6xet0raedtd" path="res://UI/Red-Rage-quit-UI-button.png" id="8_5vecj"]
-[ext_resource type="AudioStream" uid="uid://bs2v7f80yu11u" path="res://audio/Kiwijam Menu Music Loop.mp3" id="8_povcf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x4okx"]
 texture = ExtResource("4_uthn2")
@@ -71,7 +70,29 @@ _data = {
 "Rage quit": SubResource("Animation_ka2wt")
 }
 
+[sub_resource type="Animation" id="Animation_ega7y"]
+resource_name = "fadeIn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fadeRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jas65"]
+_data = {
+"fadeIn": SubResource("Animation_ega7y")
+}
+
 [node name="EndUI" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,7 +101,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_clk3l")
 
+[node name="fadeRect" type="ColorRect" parent="."]
+z_index = 2
+offset_right = 1946.0
+offset_bottom = 1084.0
+color = Color(0, 0, 0, 1)
+
 [node name="Background" type="TextureRect" parent="."]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,6 +117,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_c6g6l")
 
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 160.0
+offset_right = 1906.0
+offset_bottom = 434.0
+theme_override_fonts/font = ExtResource("3_qgefk")
+theme_override_font_sizes/font_size = 110
+text = "Your Score: 
+Highscore: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RestartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -96,30 +137,18 @@ anchor_left = 0.437
 anchor_top = 0.528
 anchor_right = 0.562
 anchor_bottom = 0.583
-offset_left = 299.512
-offset_top = -69.128
-offset_right = 337.512
-offset_bottom = -25.808
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = -13.04
+offset_top = 6.76001
+offset_right = 24.96
+offset_bottom = 50.08
+theme_override_colors/font_color = Color(0, 0.0313726, 0.180392, 1)
 theme_override_fonts/font = ExtResource("3_qgefk")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_x4okx")
 theme_override_styles/hover = SubResource("StyleBoxTexture_qnpl3")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5rknl")
 theme_override_styles/focus = SubResource("StyleBoxTexture_jr2ci")
 text = "Back to Menu"
-clip_text = true
-
-[node name="ScoreLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 696.0
-offset_top = 160.0
-offset_right = 952.0
-offset_bottom = 212.0
-theme_override_fonts/font = ExtResource("3_qgefk")
-text = "Your Score: 
-Highscore: "
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="RageQuitButton" type="Button" parent="."]
 layout_mode = 1
@@ -128,10 +157,10 @@ anchor_left = 0.992
 anchor_top = 0.069
 anchor_right = 0.992
 anchor_bottom = 0.069
-offset_left = -255.808
-offset_top = 288.256
-offset_right = -120.808
-offset_bottom = 363.256
+offset_left = -997.192
+offset_top = 629.368
+offset_right = -862.192
+offset_bottom = 704.368
 grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_qgefk")
@@ -139,8 +168,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_djydt")
 theme_override_styles/hover = SubResource("StyleBoxTexture_khdi3")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_t5jma")
 theme_override_styles/focus = SubResource("StyleBoxTexture_0pim2")
-text = "Rage Quit!"
-clip_text = true
+text = "Rage Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../RageQuitButton")
@@ -149,6 +177,11 @@ libraries = {
 "": SubResource("AnimationLibrary_x0npq")
 }
 
-[node name="mainMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_povcf")
-autoplay = true
+[node name="fadeInAnim" type="AnimationPlayer" parent="."]
+autoplay = "fadeIn"
+libraries = {
+"": SubResource("AnimationLibrary_jas65")
+}
+
+[connection signal="button_down" from="RestartButton" to="." method="_on_restart_button_button_down"]
+[connection signal="button_down" from="RageQuitButton" to="." method="_on_rage_quit_button_button_down"]

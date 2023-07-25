@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvowqvls8xre3"]
+[gd_scene load_steps=9 format=3 uid="uid://cvowqvls8xre3"]
 
 [ext_resource type="Script" path="res://main/objects/xp.gd" id="1_hcm6f"]
 [ext_resource type="Texture2D" uid="uid://ccxdw6yi5j76u" path="res://main/xpSprites/nut.png" id="2_k40bd"]
@@ -7,9 +7,46 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_illfp"]
 
+[sub_resource type="Animation" id="Animation_2u5vw"]
+resource_name = "flicker"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.7, 0.8, 1.1, 1.2, 1.5, 1.6, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_5nagg"]
+resource_name = "reset"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e1lfo"]
+_data = {
+"flicker": SubResource("Animation_2u5vw"),
+"reset": SubResource("Animation_5nagg")
+}
+
 [node name="xp" type="Area2D"]
 modulate = Color(0.219608, 0.968627, 1, 1)
-scale = Vector2(0.5, 0.5)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_hcm6f")
@@ -42,4 +79,16 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="flickerTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[node name="flickerAnim" type="AnimationPlayer" parent="."]
+autoplay = "reset"
+libraries = {
+"": SubResource("AnimationLibrary_e1lfo")
+}
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="flickerTimer" to="." method="_on_flicker_timer_timeout"]

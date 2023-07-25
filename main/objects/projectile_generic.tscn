@@ -1,14 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfgbubkgafr6o"]
+[gd_scene load_steps=8 format=3 uid="uid://dfgbubkgafr6o"]
 
 [ext_resource type="Script" path="res://main/objects/projectile_generic.gd" id="1_b6wyv"]
 [ext_resource type="Texture2D" uid="uid://daq6h1ut81k32" path="res://main/projectileGenericTemp.png" id="2_5xn03"]
+[ext_resource type="Texture2D" uid="uid://og4l1qwow4mb" path="res://Tower/explosionParticle.png" id="3_t2uux"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86mrb"]
+
+[sub_resource type="Gradient" id="Gradient_j3xrp"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8mvhi"]
+gradient = SubResource("Gradient_j3xrp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yab4s"]
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 76.724
+damping_max = 100.0
+scale_min = 0.05
+scale_max = 0.15
+color_ramp = SubResource("GradientTexture1D_8mvhi")
 
 [node name="projectileGeneric" type="Area2D"]
 collision_layer = 128
 collision_mask = 130
 script = ExtResource("1_b6wyv")
+speed = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_86mrb")
@@ -25,9 +47,22 @@ wait_time = 30.0
 one_shot = true
 autostart = true
 
+[node name="killTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [node name="director" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -1)
 
+[node name="explosionParticles" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_yab4s")
+texture = ExtResource("3_t2uux")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="killTimer" to="." method="_on_kill_timer_timeout"]

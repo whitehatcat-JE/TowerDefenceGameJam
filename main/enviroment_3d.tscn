@@ -1,16 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccnt5f231dw6d"]
+[gd_scene load_steps=32 format=3 uid="uid://ccnt5f231dw6d"]
 
 [ext_resource type="Script" path="res://main/enviroment_3d.gd" id="1_t2shv"]
 [ext_resource type="PackedScene" uid="uid://dgf7pwuv337sv" path="res://main/level.tscn" id="2_bjcbj"]
 [ext_resource type="ArrayMesh" uid="uid://div1guv8g4vv3" path="res://main/Terrain.obj" id="2_bxunh"]
-[ext_resource type="ArrayMesh" uid="uid://dgdytpq3ejngx" path="res://main/TowerBoi.obj" id="2_eid18"]
+[ext_resource type="ArrayMesh" uid="uid://dit0db15py851" path="res://Tower/TowerBoi&Walls.obj" id="3_1cc1m"]
 [ext_resource type="PackedScene" uid="uid://8q6ovcg2jcc4" path="res://UI/GameUI.tscn" id="5_56gkc"]
+[ext_resource type="Texture2D" uid="uid://b76v012i4uid0" path="res://main/explosion.png" id="6_8v2kb"]
+[ext_resource type="AudioStream" uid="uid://5wpqk86s021u" path="res://audio/Enemy 1 Death Explosion 02.mp3" id="7_08hac"]
+[ext_resource type="Texture2D" uid="uid://c5ynkse6pv7ul" path="res://Tower/RailGun/Railgun_aiStandardSurface19SG_BaseColor.png" id="8_ob4ij"]
+[ext_resource type="Texture2D" uid="uid://774d4ti78pj1" path="res://Tower/RailGun/Railgun_aiStandardSurface19SG_Height.png" id="9_ug650"]
+[ext_resource type="Texture2D" uid="uid://djqhng4e2r8jq" path="res://Tower/RailGun/Railgun_aiStandardSurface19SG_Metallic.png" id="10_csgyf"]
+[ext_resource type="Texture2D" uid="uid://q7roge6s1dj8" path="res://Tower/RailGun/Railgun_aiStandardSurface19SG_Normal.png" id="11_jgsgx"]
+[ext_resource type="Texture2D" uid="uid://cfu42g46me8k4" path="res://Tower/RailGun/Railgun_aiStandardSurface19SG_Roughness.png" id="12_xkdy8"]
+[ext_resource type="ArrayMesh" uid="uid://vv1s2wfxvh0i" path="res://Tower/RailGun/Railgun.obj" id="13_sk4x0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ac3fk"]
 albedo_color = Color(0.501961, 0.0352941, 0.0235294, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1u2dv"]
-albedo_color = Color(0.588235, 0.588235, 0.572549, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xeuyb"]
+albedo_color = Color(1, 0.372549, 0.360784, 1)
+metallic = 0.68
+grow = true
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0fqri"]
 viewport_path = NodePath("levelViewport")
@@ -39,13 +49,174 @@ _data = {
 
 [sub_resource type="Environment" id="Environment_xpkox"]
 background_mode = 1
-background_color = Color(0.137255, 0.784314, 0.909804, 1)
-ambient_light_color = Color(0.803922, 0.803922, 0.803922, 1)
-volumetric_fog_enabled = true
+background_color = Color(0.141176, 0.0431373, 0.0313726, 1)
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
 volumetric_fog_density = 0.0
 
+[sub_resource type="Animation" id="Animation_hjs40"]
+resource_name = "destroy"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tower:material_override:grow_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.333, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tower:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector3(0.657215, 7.42927, 0.018925), Vector3(0.657, 5, 0.019)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explosionSprite3d")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"explode", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"idle", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameUI/FadeRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2, 2),
+"transitions": PackedFloat32Array(1, 3, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("explosionSFX:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2mj4y"]
+_data = {
+"destroy": SubResource("Animation_hjs40")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqfmg"]
+atlas = ExtResource("6_8v2kb")
+region = Rect2(0, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xgc0"]
+atlas = ExtResource("6_8v2kb")
+region = Rect2(512, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16n0q"]
+atlas = ExtResource("6_8v2kb")
+region = Rect2(0, 256, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs06q"]
+atlas = ExtResource("6_8v2kb")
+region = Rect2(512, 256, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgh0o"]
+atlas = ExtResource("6_8v2kb")
+region = Rect2(0, 512, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooaj7"]
+atlas = ExtResource("6_8v2kb")
+region = Rect2(512, 512, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yevxv"]
+atlas = ExtResource("6_8v2kb")
+region = Rect2(0, 768, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o74e2"]
+atlas = ExtResource("6_8v2kb")
+region = Rect2(512, 768, 512, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dgukj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqfmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xgc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16n0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs06q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgh0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooaj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yevxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o74e2")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a0kc"]
+albedo_texture = ExtResource("8_ob4ij")
+metallic = 1.0
+metallic_texture = ExtResource("10_csgyf")
+roughness_texture = ExtResource("12_xkdy8")
+normal_enabled = true
+normal_texture = ExtResource("11_jgsgx")
+heightmap_scale = 1.0
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("9_ug650")
+
 [node name="enviroment3D" type="Node3D"]
-process_priority = -1
+process_mode = 3
+process_priority = 1
 script = ExtResource("1_t2shv")
 
 [node name="terrain" type="MeshInstance3D" parent="."]
@@ -53,16 +224,28 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 7.2659, 0)
 mesh = ExtResource("2_bxunh")
 surface_material_override/0 = SubResource("StandardMaterial3D_ac3fk")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.657215, 7.3224, 0.018925)
-mesh = ExtResource("2_eid18")
-surface_material_override/0 = SubResource("StandardMaterial3D_1u2dv")
+[node name="playerLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.96046e-08, 9.70839, -1.86265e-09)
+light_color = Color(1, 0.803922, 0.6, 1)
+light_energy = 3.0
+light_specular = 0.0
+shadow_enabled = true
+spot_range = 13.9791
+spot_angle = 73.9098
+
+[node name="tower" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.657215, 7.42927, 0.018925)
+material_override = SubResource("StandardMaterial3D_xeuyb")
+cast_shadow = 0
+mesh = ExtResource("3_1cc1m")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.8326, 0)
+size = 10.0
 
 [node name="projectedLevel" type="Sprite3D" parent="Camera3D"]
-transform = Transform3D(1.03, 0, 0, 0, 1.03, -3.19744e-14, 0, 3.19744e-14, 1.03, 0, 1.8764e-07, -4.2927)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, -1.59872e-14, 0, 1.59872e-14, 0.5, 0, 1.88721e-07, -4.31745)
+double_sided = false
 texture = SubResource("ViewportTexture_0fqri")
 
 [node name="screenshake" type="AnimationPlayer" parent="Camera3D"]
@@ -70,26 +253,72 @@ libraries = {
 "": SubResource("AnimationLibrary_5tpvk")
 }
 
+[node name="playerLight" type="SpotLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6426e-08, -1.0621)
+light_color = Color(1, 0.803922, 0.6, 1)
+light_energy = 3.0
+light_specular = 0.0
+shadow_enabled = true
+spot_range = 13.9791
+spot_angle = 73.9098
+
 [node name="levelViewport" type="SubViewport" parent="."]
+process_mode = 3
 disable_3d = true
 transparent_bg = true
-size = Vector2i(1152, 648)
+audio_listener_enable_2d = true
+size = Vector2i(3840, 2160)
+render_target_update_mode = 4
 
 [node name="level" parent="levelViewport" instance=ExtResource("2_bjcbj")]
 unique_name_in_owner = true
-
-[node name="empAttack" parent="levelViewport/level/tower" index="2"]
-scale = Vector2(0.2, 0.2)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xpkox")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.7456, 0)
+transform = Transform3D(0.177695, -0.536563, 0.824939, -0.977578, -1.92097e-09, 0.210574, -0.112986, -0.84386, -0.524532, 0, 17.7456, 0)
+light_color = Color(0, 0.105882, 0.65098, 1)
+shadow_enabled = true
 
 [node name="GameUI" parent="." instance=ExtResource("5_56gkc")]
+process_mode = 1
+
+[node name="towerDestructionAnim" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_2mj4y")
+}
+
+[node name="explosionSprite3d" type="AnimatedSprite3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597788, 8.56481, 0)
+billboard = 1
+no_depth_test = true
+sprite_frames = SubResource("SpriteFrames_dgukj")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="explosionSFX" type="AudioStreamPlayer3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.736068, 7.34155, 0)
+stream = ExtResource("7_08hac")
+volume_db = 15.0
+unit_size = 45.57
+pitch_scale = 0.4
+
+[node name="railgunPivot" type="Node3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.652727, 8.57502, 0.0159232)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="railgunPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.803, 0)
+material_override = SubResource("StandardMaterial3D_0a0kc")
+mesh = ExtResource("13_sk4x0")
+skeleton = NodePath("../..")
 
 [connection signal="plrAttack" from="levelViewport/level/Player" to="." method="_on_player_plr_attack"]
+[connection signal="animation_finished" from="towerDestructionAnim" to="." method="_on_tower_destruction_anim_animation_finished"]
 
 [editable path="levelViewport/level"]
 [editable path="levelViewport/level/Player"]
+[editable path="GameUI"]

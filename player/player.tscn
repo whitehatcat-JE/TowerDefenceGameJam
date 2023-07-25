@@ -1,13 +1,21 @@
-[gd_scene load_steps=29 format=3 uid="uid://cqaj2h0k5x558"]
+[gd_scene load_steps=38 format=3 uid="uid://cqaj2h0k5x558"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_xp17c"]
 [ext_resource type="Texture2D" uid="uid://hfjitjm2c386" path="res://main/playerAttack.png" id="2_vv2vs"]
+[ext_resource type="Texture2D" uid="uid://djuru5cig7hk7" path="res://main/playerIdle.png" id="3_5jrft"]
 [ext_resource type="Texture2D" uid="uid://dvoj286yp04n5" path="res://main/attackSweep.png" id="3_b06pq"]
 [ext_resource type="Texture2D" uid="uid://bllrh81tw81le" path="res://main/playerWalk.png" id="3_hqjjq"]
 [ext_resource type="Script" path="res://player/SwordHitbox.gd" id="3_lfrnb"]
 [ext_resource type="Script" path="res://player/Stats.gd" id="4_fmgyg"]
 [ext_resource type="Script" path="res://Tower/GV.gd" id="5_qlxj6"]
 [ext_resource type="AudioStream" uid="uid://cvid6sl4re7eh" path="res://audio/Protagonist Attack 01.mp3" id="6_f12d8"]
+[ext_resource type="AudioStream" uid="uid://dxppyaqte4pob" path="res://audio/Protagonist Attack Hit 01.mp3" id="7_errr0"]
+[ext_resource type="AudioStream" uid="uid://cylgyut3hcwsa" path="res://audio/Protagonist Attack 02.mp3" id="8_sq1an"]
+[ext_resource type="AudioStream" uid="uid://cp20oevqdjqx3" path="res://audio/Protagonist Attack 03.mp3" id="9_caxjj"]
+[ext_resource type="AudioStream" uid="uid://b0evecjk4t8tq" path="res://audio/Protagonist Attack Hit 02.mp3" id="11_60ibh"]
+[ext_resource type="AudioStream" uid="uid://d1a5mpmt41qi8" path="res://audio/Protagonist Attack Hit 03.mp3" id="12_mjvbs"]
+[ext_resource type="AudioStream" uid="uid://byi465dghhviy" path="res://audio/Protagonist Attack Hit 04.mp3" id="13_pmywt"]
+[ext_resource type="AudioStream" uid="uid://bvedkhbic5346" path="res://audio/Protagonist Attack Hit 05.mp3" id="14_e8qsh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wqmnc"]
 radius = 63.0
@@ -29,9 +37,13 @@ region = Rect2(768, 0, 256, 256)
 atlas = ExtResource("2_vv2vs")
 region = Rect2(0, 256, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ruy83"]
-atlas = ExtResource("2_vv2vs")
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxoyt"]
+atlas = ExtResource("3_5jrft")
 region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfmpw"]
+atlas = ExtResource("3_5jrft")
+region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0aqib"]
 atlas = ExtResource("3_hqjjq")
@@ -59,6 +71,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_hsrds")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hsrds")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2aeqd")
 }, {
 "duration": 1.0,
@@ -66,13 +81,16 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ruy83")
+"texture": SubResource("AtlasTexture_rxoyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfmpw")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -138,7 +156,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"sweep",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_faoq7"]
@@ -181,7 +199,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 4
+collision_layer = 260
 script = ExtResource("1_xp17c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -191,7 +209,7 @@ shape = SubResource("CapsuleShape2D_wqmnc")
 texture_filter = 1
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_a2dr8")
-animation = &"attack"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="attackSprite" type="AnimatedSprite2D" parent="playerSprite"]
@@ -211,9 +229,10 @@ monitorable = false
 shape = SubResource("CircleShape2D_faoq7")
 
 [node name="attackField" type="Area2D" parent="playerSprite"]
-position = Vector2(-200, 0)
+position = Vector2(400, 0)
 scale = Vector2(2, 2)
 collision_mask = 2
+monitoring = false
 monitorable = false
 script = ExtResource("3_lfrnb")
 
@@ -221,8 +240,29 @@ script = ExtResource("3_lfrnb")
 position = Vector2(93.5, 0)
 shape = SubResource("RectangleShape2D_fikur")
 
-[node name="attackSFX" type="AudioStreamPlayer" parent="."]
+[node name="attackSFX1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_f12d8")
+
+[node name="attackSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_sq1an")
+
+[node name="attackSFX3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_caxjj")
+
+[node name="attackHitSFX1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_errr0")
+
+[node name="attackHitSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_60ibh")
+
+[node name="attackHitSFX3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_mjvbs")
+
+[node name="attackHitSFX4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_pmywt")
+
+[node name="attackHitSFX5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_e8qsh")
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("4_fmgyg")
@@ -231,10 +271,13 @@ script = ExtResource("4_fmgyg")
 script = ExtResource("5_qlxj6")
 
 [node name="attackAnim" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_uyalm")
 }
 
+[connection signal="animation_finished" from="playerSprite" to="." method="_on_player_sprite_animation_finished"]
 [connection signal="frame_changed" from="playerSprite" to="." method="_on_player_sprite_frame_changed"]
 [connection signal="area_entered" from="playerSprite/xpCollisionField" to="." method="_on_xp_collision_field_area_entered"]
 [connection signal="body_entered" from="playerSprite/attackField" to="playerSprite/attackField" method="_on_body_entered"]
+[connection signal="hitEnemy" from="playerSprite/attackField" to="." method="_on_attack_field_hit_enemy"]

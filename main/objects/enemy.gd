@@ -22,6 +22,11 @@ var playerDamaged:bool = false
 func die():
 	dead = true
 	$explosionTimer.stop()
+	if has_node("idleAmbienceA"):
+		$idleAmbienceA.stop()
+		$idleAmbienceB.stop()
+	if randf() > 0.5: $explosionASFX.play();
+	else: $explosionBSFX.play();
 	$healthbarPivot/explosionSprite.play("explosion")
 	$healthbarPivot/enemySpriteLeft.visible = false
 	$healthbarPivot/enemySpriteRight.visible = false

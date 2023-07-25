@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8q6ovcg2jcc4"]
+[gd_scene load_steps=20 format=3 uid="uid://8q6ovcg2jcc4"]
 
 [ext_resource type="Script" path="res://UI/GameUI.gd" id="1_edb48"]
 [ext_resource type="StyleBox" uid="uid://bxaxtua03o8bv" path="res://UI/UIGrey.stylebox" id="1_ufxl4"]
@@ -7,6 +7,17 @@
 [ext_resource type="FontFile" uid="uid://cf1vryjtx8kj0" path="res://main/objects/ALGER.TTF" id="4_j7j2p"]
 [ext_resource type="Texture2D" uid="uid://k6xet0raedtd" path="res://UI/Red-Rage-quit-UI-button.png" id="5_0fa8w"]
 [ext_resource type="Texture2D" uid="uid://d0vgc4x7rhjr7" path="res://UI/button-red-darker.png" id="7_ka5np"]
+[ext_resource type="Shader" path="res://UI/vignette.gdshader" id="8_selxq"]
+[ext_resource type="Script" path="res://Tower/GV.gd" id="9_22u2e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q0fyw"]
+shader = ExtResource("8_selxq")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldrgu"]
+bg_color = Color(0, 0.027451, 0.117647, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_enf5o"]
 texture = ExtResource("5_0fa8w")
@@ -20,6 +31,60 @@ texture = ExtResource("7_ka5np")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iwnq0"]
 texture = ExtResource("7_ka5np")
 
+[sub_resource type="Animation" id="Animation_8b5fy"]
+resource_name = "damage"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vignette:material:shader_parameter/vignette_rgb")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 0, 0.0196078, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("vignette:material:shader_parameter/vignette_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.6, 0.4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nonup"]
+_data = {
+"damage": SubResource("Animation_8b5fy")
+}
+
+[sub_resource type="Animation" id="Animation_ega7y"]
+resource_name = "fadeIn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fadeRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jas65"]
+_data = {
+"fadeIn": SubResource("Animation_ega7y")
+}
+
 [node name="GameUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -29,12 +94,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_edb48")
 
+[node name="vignette" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_q0fyw")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.056
-offset_bottom = -0.256001
+offset_bottom = -26.48
 grow_horizontal = 2
 theme_override_styles/background = ExtResource("1_ufxl4")
 theme_override_styles/fill = ExtResource("2_wnhax")
@@ -48,13 +119,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -51.0
+offset_top = -17.0
+offset_right = 364.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("4_j7j2p")
+theme_override_font_sizes/font_size = 120
 text = "0/0
 "
 horizontal_alignment = 1
@@ -66,11 +141,11 @@ anchors_preset = -1
 anchor_top = 0.944
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -0.744019
-offset_bottom = -1.0
+offset_top = -985.52
+offset_bottom = -1012.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/background = ExtResource("1_ufxl4")
+theme_override_styles/background = SubResource("StyleBoxFlat_ldrgu")
 theme_override_styles/fill = ExtResource("3_crekm")
 value = 50.0
 show_percentage = false
@@ -82,13 +157,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -13.0
-offset_right = 20.0
-offset_bottom = 13.0
+offset_left = -51.0
+offset_top = -17.0
+offset_right = 364.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("4_j7j2p")
+theme_override_font_sizes/font_size = 120
 text = "0/0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -132,3 +211,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="damageAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nonup")
+}
+
+[node name="GV" type="Node" parent="."]
+script = ExtResource("9_22u2e")
+
+[node name="fadeRect" type="ColorRect" parent="."]
+z_index = 2
+offset_right = 1946.0
+offset_bottom = 1084.0
+color = Color(0, 0, 0, 1)
+
+[node name="fadeInAnim" type="AnimationPlayer" parent="."]
+autoplay = "fadeIn"
+libraries = {
+"": SubResource("AnimationLibrary_jas65")
+}

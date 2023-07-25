@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dllnoreof1rvm"
+path="res://.godot/imported/TowerBoi_Walls.obj-2ae8d10981f548b6f03187be923c0599.mesh"
+
+[deps]
+
+files=["res://.godot/imported/TowerBoi_Walls.obj-2ae8d10981f548b6f03187be923c0599.mesh"]
+
+source_file="res://main/TowerBoi_Walls.obj"
+dest_files=["res://.godot/imported/TowerBoi_Walls.obj-2ae8d10981f548b6f03187be923c0599.mesh", "res://.godot/imported/TowerBoi_Walls.obj-2ae8d10981f548b6f03187be923c0599.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
