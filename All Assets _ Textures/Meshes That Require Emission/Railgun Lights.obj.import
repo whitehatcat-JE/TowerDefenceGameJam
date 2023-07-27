@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cfavog6ncvqxh"
+path="res://.godot/imported/Railgun Lights.obj-2552c0c67f3876b6b9f49ef131423a09.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Railgun Lights.obj-2552c0c67f3876b6b9f49ef131423a09.mesh"]
+
+source_file="res://All Assets _ Textures/Meshes That Require Emission/Railgun Lights.obj"
+dest_files=["res://.godot/imported/Railgun Lights.obj-2552c0c67f3876b6b9f49ef131423a09.mesh", "res://.godot/imported/Railgun Lights.obj-2552c0c67f3876b6b9f49ef131423a09.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

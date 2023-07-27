@@ -103,6 +103,7 @@ script = ExtResource("1_clk3l")
 
 [node name="fadeRect" type="ColorRect" parent="."]
 z_index = 2
+layout_mode = 0
 offset_right = 1946.0
 offset_bottom = 1084.0
 color = Color(0, 0, 0, 1)

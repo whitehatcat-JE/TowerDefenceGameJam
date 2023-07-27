@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ddwbdg7d3xexb"
+path="res://.godot/imported/Tower NO TURRETS.obj-ab0f4d78d4ae106b6d87579e14ef394a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Tower NO TURRETS.obj-ab0f4d78d4ae106b6d87579e14ef394a.mesh"]
+
+source_file="res://All Assets _ Textures/Tower/Tower NO TURRETS.obj"
+dest_files=["res://.godot/imported/Tower NO TURRETS.obj-ab0f4d78d4ae106b6d87579e14ef394a.mesh", "res://.godot/imported/Tower NO TURRETS.obj-ab0f4d78d4ae106b6d87579e14ef394a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

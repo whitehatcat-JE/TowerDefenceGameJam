@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c45fr17mt2qlk"
+path="res://.godot/imported/Tower WITH TURRETS.obj-fec1ef918312619d3567ff84a03b4d9b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Tower WITH TURRETS.obj-fec1ef918312619d3567ff84a03b4d9b.mesh"]
+
+source_file="res://Tower/Tower WITH TURRETS.obj"
+dest_files=["res://.godot/imported/Tower WITH TURRETS.obj-fec1ef918312619d3567ff84a03b4d9b.mesh", "res://.godot/imported/Tower WITH TURRETS.obj-fec1ef918312619d3567ff84a03b4d9b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

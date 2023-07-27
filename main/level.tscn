@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dgf7pwuv337sv"]
+[gd_scene load_steps=47 format=3 uid="uid://dgf7pwuv337sv"]
 
 [ext_resource type="Script" path="res://main/level.gd" id="1_clrrc"]
 [ext_resource type="Script" path="res://main/tower.gd" id="2_2sm2v"]
@@ -10,20 +10,25 @@
 [ext_resource type="PackedScene" uid="uid://cqaj2h0k5x558" path="res://player/player.tscn" id="5_b521d"]
 [ext_resource type="AudioStream" uid="uid://ciuurcjst3tya" path="res://audio/Tower EMP Shockwave.mp3" id="6_ag8nc"]
 [ext_resource type="AudioStream" uid="uid://beob0xnkbkpff" path="res://audio/Kiwijam Main Music Loop.mp3" id="7_kgg0s"]
-[ext_resource type="AudioStream" uid="uid://num466ts4od5" path="res://audio/Tower Minigun Shot 01.mp3" id="8_d7p46"]
-[ext_resource type="AudioStream" uid="uid://clilsw01euisv" path="res://audio/Tower Minigun Shot 02.mp3" id="9_gfsjy"]
-[ext_resource type="AudioStream" uid="uid://cbn20rliva6lq" path="res://audio/Tower Minigun Shot 03.mp3" id="10_651gj"]
-[ext_resource type="AudioStream" uid="uid://brhcpfuhh1wp6" path="res://audio/Tower Minigun Shot 04.mp3" id="11_be1sg"]
-[ext_resource type="AudioStream" uid="uid://dvfvcovul1l2o" path="res://audio/Tower Minigun Shot 05.mp3" id="12_dpsq3"]
+[ext_resource type="AudioStream" uid="uid://c5cjyv1738lxn" path="res://audio/Tower Railgun Shot 01.mp3" id="9_ti0pi"]
+[ext_resource type="AudioStream" uid="uid://ddpg5l6keh1lv" path="res://audio/Tower Railgun Shot 02.mp3" id="10_kpye1"]
+[ext_resource type="AudioStream" uid="uid://dxkgn5etrwsay" path="res://audio/Tower Railgun Shot 03.mp3" id="11_ol0yv"]
+[ext_resource type="AudioStream" uid="uid://dtgrxbv2wfpf7" path="res://audio/New Gun Sound FX.mp3" id="12_5ft5c"]
+[ext_resource type="Shader" path="res://main/laser.gdshader" id="14_n6edu"]
 [ext_resource type="Script" path="res://player/Stats.gd" id="15_lbfrd"]
 [ext_resource type="Texture2D" uid="uid://c13ycq5hy1lq" path="res://main/healIcon.png" id="16_7ckq7"]
 [ext_resource type="Script" path="res://Tower/GV.gd" id="16_l1nly"]
 [ext_resource type="Texture2D" uid="uid://b6yvhemca538y" path="res://Tower/healWave.png" id="17_6cuxq"]
 [ext_resource type="Script" path="res://main/healLocation.gd" id="17_jana7"]
+[ext_resource type="Script" path="res://main/railgunAttack.gd" id="18_msfey"]
 [ext_resource type="FontFile" uid="uid://cf1vryjtx8kj0" path="res://main/objects/ALGER.TTF" id="18_sa7eg"]
+[ext_resource type="AudioStream" uid="uid://jtppgyuufwoo" path="res://audio/Green Zone Tower Repair.mp3" id="19_wws37"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fl7xi"]
+size = Vector2(60, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m23h"]
-size = Vector2(90, 91)
+size = Vector2(150, 150)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iqa8e"]
 radius = 92.0
@@ -31,7 +36,7 @@ height = 184.0
 
 [sub_resource type="Animation" id="Animation_b6qbd"]
 resource_name = "emp"
-length = 2.5
+length = 2.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -40,7 +45,7 @@ tracks/0/path = NodePath("empAttack:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.5),
+"times": PackedFloat32Array(0, 0.4, 1.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -52,7 +57,7 @@ tracks/1/path = NodePath("empAttack:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.6, 1.2, 1.8),
+"times": PackedFloat32Array(0.4, 1, 1.6),
 "transitions": PackedFloat32Array(0.3, 0, 1),
 "update": 0,
 "values": [Vector2(0.2, 0.2), Vector2(1, 1), Vector2(0.2, 0.2)]
@@ -64,7 +69,7 @@ tracks/2/path = NodePath("empAttack/Sprite2D:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.8, 1.4, 1.8, 2.5),
+"times": PackedFloat32Array(0, 0.4, 0.6, 1.2, 1.6, 2.3),
 "transitions": PackedFloat32Array(1, 2, 1, 2, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
@@ -85,6 +90,96 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q03fj"]
 _data = {
 "emp": SubResource("Animation_b6qbd")
+}
+
+[sub_resource type="Animation" id="Animation_2odxi"]
+resource_name = "walls"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("towerCollisions/hitbox2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wttmf"]
+_data = {
+"walls": SubResource("Animation_2odxi")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ne6dd"]
+resource_local_to_scene = true
+shader = ExtResource("14_n6edu")
+shader_parameter/beams = 2
+shader_parameter/energy = 3.0
+shader_parameter/roughness = 3
+shader_parameter/frequency = 10
+shader_parameter/speed = 1.0
+shader_parameter/thickness = 0.011
+shader_parameter/outline_thickness = 0.028
+shader_parameter/beam_difference = 0.0
+shader_parameter/glow = 0.0
+shader_parameter/outline_glow = 0.0
+shader_parameter/color = Color(0.91, 1, 1, 1)
+shader_parameter/outline_color = Color(0.101961, 0.662745, 1, 1)
+shader_parameter/progress = 0.0
+shader_parameter/y_offset = 0.0
+shader_parameter/fixed_edge_size = 0.05
+shader_parameter/noise_scale = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3a4ct"]
+size = Vector2(4112.5, 222.5)
+
+[sub_resource type="Animation" id="Animation_00ylp"]
+resource_name = "fire"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("railgunAttack/laser:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.5, 0.5001, 1),
+"transitions": PackedFloat32Array(1, 0.5, 3, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("railgunAttack/railgunAttack:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("railgunAttack/railgunAttack:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0, 0, 1),
+"update": 0,
+"values": [Vector2(0, 0.2), Vector2(0.2, 0.2), Vector2(0, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_603bj"]
+_data = {
+"fire": SubResource("Animation_00ylp")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t3dj1"]
@@ -174,6 +269,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fihn"]
 size = Vector2(30, 2853)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0sw0d"]
+radius = 30.1496
+
 [node name="level" type="Node2D"]
 script = ExtResource("1_clrrc")
 
@@ -194,16 +292,14 @@ stream = ExtResource("4_jkoya")
 [node name="towerCollisions" type="StaticBody2D" parent="tower"]
 script = ExtResource("3_l3b3u")
 
-[node name="hitbox" type="CollisionShape2D" parent="tower/towerCollisions"]
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_2m23h")
+[node name="centerHitbox" type="CollisionShape2D" parent="tower/towerCollisions"]
+position = Vector2(5, 7)
+shape = SubResource("RectangleShape2D_fl7xi")
 
-[node name="ColorRect" type="ColorRect" parent="tower"]
-visible = false
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+[node name="hitbox2" type="CollisionShape2D" parent="tower/towerCollisions"]
+position = Vector2(0, 2.5)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_2m23h")
 
 [node name="empAttack" type="Area2D" parent="tower"]
 scale = Vector2(0.2, 0.2)
@@ -230,28 +326,65 @@ libraries = {
 [node name="empFieldAudio" type="AudioStreamPlayer2D" parent="tower"]
 stream = ExtResource("6_ag8nc")
 
+[node name="railgunSFX1" type="AudioStreamPlayer2D" parent="tower"]
+stream = ExtResource("9_ti0pi")
+volume_db = -2.0
+
+[node name="railgunSFX2" type="AudioStreamPlayer2D" parent="tower"]
+stream = ExtResource("10_kpye1")
+volume_db = -2.0
+
+[node name="railgunSFX3" type="AudioStreamPlayer2D" parent="tower"]
+stream = ExtResource("11_ol0yv")
+volume_db = -2.0
+
 [node name="shotSFX1" type="AudioStreamPlayer2D" parent="tower"]
-stream = ExtResource("8_d7p46")
-volume_db = -2.0
+stream = ExtResource("12_5ft5c")
+volume_db = 5.0
 
-[node name="shotSFX2" type="AudioStreamPlayer2D" parent="tower"]
-stream = ExtResource("9_gfsjy")
-volume_db = -2.0
+[node name="upgradeAnims" type="AnimationPlayer" parent="tower"]
+libraries = {
+"": SubResource("AnimationLibrary_wttmf")
+}
 
-[node name="shotSFX3" type="AudioStreamPlayer2D" parent="tower"]
-stream = ExtResource("10_651gj")
-volume_db = -2.0
+[node name="railgunAttack" type="Node2D" parent="tower"]
+position = Vector2(7, 5)
 
-[node name="shotSFX4" type="AudioStreamPlayer2D" parent="tower"]
-stream = ExtResource("11_be1sg")
-volume_db = -2.0
+[node name="laser" type="ColorRect" parent="tower/railgunAttack"]
+material = SubResource("ShaderMaterial_ne6dd")
+offset_left = 3.0
+offset_top = -637.0
+offset_right = 1642.0
+offset_bottom = 637.0
 
-[node name="shotSFX5" type="AudioStreamPlayer2D" parent="tower"]
-stream = ExtResource("12_dpsq3")
-volume_db = -2.0
+[node name="railgunAttack" type="Area2D" parent="tower/railgunAttack"]
+scale = Vector2(1e-05, 0.2)
+collision_mask = 2
+monitoring = false
+monitorable = false
+script = ExtResource("18_msfey")
+
+[node name="hitbox" type="CollisionShape2D" parent="tower/railgunAttack/railgunAttack"]
+position = Vector2(4097.5, 7.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_3a4ct")
+
+[node name="targetDirection" type="Node2D" parent="tower/railgunAttack"]
+position = Vector2(176, 0)
+
+[node name="railgunAnim" type="AnimationPlayer" parent="tower"]
+libraries = {
+"": SubResource("AnimationLibrary_603bj")
+}
+
+[node name="railgunTimer" type="Timer" parent="tower"]
+wait_time = 5.0
+
+[node name="enemyTimer" type="Timer" parent="tower"]
+wait_time = 2.0
 
 [node name="healLocation" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0.443137)
+modulate = Color(1, 1, 1, 0.576471)
 position = Vector2(-2768, 700)
 script = ExtResource("17_jana7")
 
@@ -279,11 +412,13 @@ scale = Vector2(0.286244, 0.286244)
 texture = ExtResource("17_6cuxq")
 
 [node name="healTimerDisplay" type="Label" parent="healLocation/sprite"]
-modulate = Color(0, 1, 0, 1)
+modulate = Color(0.14902, 1, 0.0705882, 1)
 offset_left = -82.0286
 offset_top = -149.791
 offset_right = 71.9714
 offset_bottom = 139.209
+theme_override_colors/font_outline_color = Color(0.0431373, 0.0509804, 0.0470588, 1)
+theme_override_constants/outline_size = 30
 theme_override_fonts/font = ExtResource("18_sa7eg")
 theme_override_font_sizes/font_size = 170
 text = "-"
@@ -297,13 +432,17 @@ libraries = {
 }
 
 [node name="healTimer" type="Timer" parent="healLocation"]
-wait_time = 0.2
+wait_time = 0.35
 one_shot = true
 
 [node name="spawnAnim" type="AnimationPlayer" parent="healLocation"]
 libraries = {
 "": SubResource("AnimationLibrary_xdt4p")
 }
+
+[node name="healSFX" type="AudioStreamPlayer" parent="healLocation"]
+stream = ExtResource("19_wws37")
+volume_db = -2.0
 
 [node name="waveTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -312,10 +451,6 @@ one_shot = true
 
 [node name="healingTimer" type="Timer" parent="."]
 wait_time = 3.0
-
-[node name="enemyTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
 
 [node name="worldConstraintNW" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -419,13 +554,33 @@ position = Vector2(528, -88)
 [node name="spot14" type="Node2D" parent="healSpots"]
 position = Vector2(200, 550)
 
+[node name="spireCollisions" type="StaticBody2D" parent="."]
+
+[node name="centerHitbox" type="CollisionShape2D" parent="spireCollisions"]
+position = Vector2(60, -213)
+shape = SubResource("CircleShape2D_0sw0d")
+
+[node name="centerHitbox2" type="CollisionShape2D" parent="spireCollisions"]
+position = Vector2(1050, -214)
+shape = SubResource("CircleShape2D_0sw0d")
+
+[node name="centerHitbox3" type="CollisionShape2D" parent="spireCollisions"]
+position = Vector2(61, 779)
+shape = SubResource("CircleShape2D_0sw0d")
+
+[node name="centerHitbox4" type="CollisionShape2D" parent="spireCollisions"]
+position = Vector2(1051, 778)
+shape = SubResource("CircleShape2D_0sw0d")
+
 [connection signal="timeout" from="budgetIncreasor" to="." method="_on_budget_increasor_timeout"]
 [connection signal="levelledUp" from="tower" to="." method="_on_tower_levelled_up"]
 [connection signal="body_entered" from="tower/empAttack" to="tower/empAttack" method="_on_body_entered"]
+[connection signal="body_entered" from="tower/railgunAttack/railgunAttack" to="tower/railgunAttack/railgunAttack" method="_on_body_entered"]
+[connection signal="timeout" from="tower/railgunTimer" to="tower" method="_on_railgun_timer_timeout"]
+[connection signal="timeout" from="tower/enemyTimer" to="tower" method="attackEnemy"]
 [connection signal="healed" from="healLocation" to="." method="_on_heal_location_healed"]
 [connection signal="body_entered" from="healLocation/playerScanner" to="healLocation" method="_on_player_scanner_body_entered"]
 [connection signal="body_exited" from="healLocation/playerScanner" to="healLocation" method="_on_player_scanner_body_exited"]
 [connection signal="timeout" from="healLocation/healTimer" to="healLocation" method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="healingTimer" to="tower" method="towerHealing"]
-[connection signal="timeout" from="enemyTimer" to="tower" method="attackEnemy"]

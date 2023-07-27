@@ -1,0 +1,5 @@
+All assets specular turned off pls.
+Junk piles may need to be duplicated and spread around the map somewhat evenly.
+Use all terrain textures/normals etc
+
+Pls and ty :)

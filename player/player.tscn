@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cqaj2h0k5x558"]
+[gd_scene load_steps=45 format=3 uid="uid://cqaj2h0k5x558"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_xp17c"]
 [ext_resource type="Texture2D" uid="uid://hfjitjm2c386" path="res://main/playerAttack.png" id="2_vv2vs"]
@@ -16,6 +16,13 @@
 [ext_resource type="AudioStream" uid="uid://d1a5mpmt41qi8" path="res://audio/Protagonist Attack Hit 03.mp3" id="12_mjvbs"]
 [ext_resource type="AudioStream" uid="uid://byi465dghhviy" path="res://audio/Protagonist Attack Hit 04.mp3" id="13_pmywt"]
 [ext_resource type="AudioStream" uid="uid://bvedkhbic5346" path="res://audio/Protagonist Attack Hit 05.mp3" id="14_e8qsh"]
+[ext_resource type="AudioStream" uid="uid://db1v57nbi4il" path="res://audio/Protagonist Footsteps 01.mp3" id="15_yyyie"]
+[ext_resource type="AudioStream" uid="uid://qt00v1uu5qiy" path="res://audio/Protagonist Footsteps 02.mp3" id="16_esd0j"]
+[ext_resource type="AudioStream" uid="uid://b64hj6atuvvuw" path="res://audio/Cog_Screw Pick-Up 01.mp3" id="17_2yvkq"]
+[ext_resource type="AudioStream" uid="uid://bbkmw2w548or0" path="res://audio/Protagonist Footsteps 03.mp3" id="17_lsmtf"]
+[ext_resource type="AudioStream" uid="uid://ci6dxev1s2ccp" path="res://audio/Cog_Screw Pick-Up 02.mp3" id="18_e37f3"]
+[ext_resource type="AudioStream" uid="uid://6psun7myyvkt" path="res://audio/Protagonist Footsteps 04.mp3" id="18_lau2s"]
+[ext_resource type="AudioStream" uid="uid://dqmugyaasbp5" path="res://audio/Protagonist Footsteps 05.mp3" id="19_w5wuu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wqmnc"]
 radius = 63.0
@@ -264,6 +271,31 @@ stream = ExtResource("13_pmywt")
 [node name="attackHitSFX5" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_e8qsh")
 
+[node name="footstepSFX1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_yyyie")
+volume_db = -15.0
+pitch_scale = 0.8
+
+[node name="footstepSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_esd0j")
+volume_db = -15.0
+pitch_scale = 0.8
+
+[node name="footstepSFX3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_lsmtf")
+volume_db = -15.0
+pitch_scale = 0.8
+
+[node name="footstepSFX4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_lau2s")
+volume_db = -15.0
+pitch_scale = 0.8
+
+[node name="footstepSFX5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_w5wuu")
+volume_db = -15.0
+pitch_scale = 0.8
+
 [node name="Node" type="Node" parent="."]
 script = ExtResource("4_fmgyg")
 
@@ -276,8 +308,23 @@ libraries = {
 "": SubResource("AnimationLibrary_uyalm")
 }
 
+[node name="xpSFX1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_2yvkq")
+volume_db = -10.0
+max_polyphony = 5
+
+[node name="xpSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_e37f3")
+volume_db = -10.0
+max_polyphony = 5
+
+[node name="footstepTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="animation_finished" from="playerSprite" to="." method="_on_player_sprite_animation_finished"]
 [connection signal="frame_changed" from="playerSprite" to="." method="_on_player_sprite_frame_changed"]
 [connection signal="area_entered" from="playerSprite/xpCollisionField" to="." method="_on_xp_collision_field_area_entered"]
 [connection signal="body_entered" from="playerSprite/attackField" to="playerSprite/attackField" method="_on_body_entered"]
 [connection signal="hitEnemy" from="playerSprite/attackField" to="." method="_on_attack_field_hit_enemy"]
+[connection signal="timeout" from="footstepTimer" to="." method="_on_footstep_timer_timeout"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bytl0m7eom8p5"
+path="res://.godot/imported/Turret Lights.obj-d94bf07d9d7cca11cdcc4c44cb2800ca.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Turret Lights.obj-d94bf07d9d7cca11cdcc4c44cb2800ca.mesh"]
+
+source_file="res://All Assets _ Textures/Meshes That Require Emission/Turret Lights.obj"
+dest_files=["res://.godot/imported/Turret Lights.obj-d94bf07d9d7cca11cdcc4c44cb2800ca.mesh", "res://.godot/imported/Turret Lights.obj-d94bf07d9d7cca11cdcc4c44cb2800ca.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

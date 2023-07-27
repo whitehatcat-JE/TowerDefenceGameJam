@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b6ik4wr3h50d1"
+path="res://.godot/imported/Spire Lights.obj-4fdfa3ba8be03c5201fd219bab99feaf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Spire Lights.obj-4fdfa3ba8be03c5201fd219bab99feaf.mesh"]
+
+source_file="res://All Assets _ Textures/Meshes That Require Emission/Spire Lights.obj"
+dest_files=["res://.godot/imported/Spire Lights.obj-4fdfa3ba8be03c5201fd219bab99feaf.mesh", "res://.godot/imported/Spire Lights.obj-4fdfa3ba8be03c5201fd219bab99feaf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

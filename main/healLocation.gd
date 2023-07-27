@@ -20,11 +20,14 @@ func _on_heal_timer_timeout():
 
 func _on_player_scanner_body_entered(body):
 	$healTimer.start()
+	$healSFX.play()
 	modulate = "ffffff"
 	$sprite/healTimerDisplay.text = "3"
 
 func _on_player_scanner_body_exited(body):
-	modulate = "ffffff71";
+	modulate = "ffffff93";
 	$healTimer.stop()
 	$sprite/healTimerDisplay.text = "-"
+	if timeLeft != 0:
+		$healSFX.stop()
 	timeLeft = 3

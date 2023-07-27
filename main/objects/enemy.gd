@@ -7,6 +7,7 @@ var dead:bool = false
 var target:Vector2
 var rectMax = 50
 var playerDamaged:bool = false
+var railgunExplosion:bool = false
 @export var explodeRange:float = 100.0
 @export var xpAmt:int = 1
 @export var damageAmt:int = 1
@@ -25,7 +26,10 @@ func die():
 	if has_node("idleAmbienceA"):
 		$idleAmbienceA.stop()
 		$idleAmbienceB.stop()
-	if randf() > 0.5: $explosionASFX.play();
+	else:
+		$movementSFX.stop()
+	if railgunExplosion: $explosionRail.play();
+	elif randf() > 0.5: $explosionASFX.play();
 	else: $explosionBSFX.play();
 	$healthbarPivot/explosionSprite.play("explosion")
 	$healthbarPivot/enemySpriteLeft.visible = false
@@ -33,8 +37,6 @@ func die():
 	$healthbarPivot/underHealth.visible = false
 	$healthbarPivot/overHealth.visible = false
 	$hitbox.set_deferred("disabled", true)
-	Stats.add_score(xpAmt * 3)
-	Stats.add_score(1)
 	for xpIdx in range(xpAmt * 5 if playerDamaged else 1):
 		GV.xpQueue.append(self.global_position)
 	GV.enemies.erase(self)
@@ -81,3 +83,6 @@ func _on_explosion_sprite_animation_finished():
 func _on_explosion_timer_timeout():
 	GV.change_health(-damageAmt)
 	die()
+
+func railgunHit():
+	railgunExplosion = true

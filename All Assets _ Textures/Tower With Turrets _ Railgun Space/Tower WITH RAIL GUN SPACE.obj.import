@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c84vfbfwjjpsm"
+path="res://.godot/imported/Tower WITH RAIL GUN SPACE.obj-a7b83699412fbdb8c8e6ac4f9c445fd2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Tower WITH RAIL GUN SPACE.obj-a7b83699412fbdb8c8e6ac4f9c445fd2.mesh"]
+
+source_file="res://All Assets _ Textures/Tower With Turrets _ Railgun Space/Tower WITH RAIL GUN SPACE.obj"
+dest_files=["res://.godot/imported/Tower WITH RAIL GUN SPACE.obj-a7b83699412fbdb8c8e6ac4f9c445fd2.mesh", "res://.godot/imported/Tower WITH RAIL GUN SPACE.obj-a7b83699412fbdb8c8e6ac4f9c445fd2.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

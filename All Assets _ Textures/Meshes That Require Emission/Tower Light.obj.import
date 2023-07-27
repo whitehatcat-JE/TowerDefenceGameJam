@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bw2ik47n0kjsy"
+path="res://.godot/imported/Tower Light.obj-88f5d1b10278738e513fd4290ba8f409.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Tower Light.obj-88f5d1b10278738e513fd4290ba8f409.mesh"]
+
+source_file="res://All Assets _ Textures/Meshes That Require Emission/Tower Light.obj"
+dest_files=["res://.godot/imported/Tower Light.obj-88f5d1b10278738e513fd4290ba8f409.mesh", "res://.godot/imported/Tower Light.obj-88f5d1b10278738e513fd4290ba8f409.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

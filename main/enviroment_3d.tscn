@@ -1,26 +1,143 @@
-[gd_scene load_steps=32 format=3 uid="uid://ccnt5f231dw6d"]
+[gd_scene load_steps=71 format=3 uid="uid://ccnt5f231dw6d"]
 
 [ext_resource type="Script" path="res://main/enviroment_3d.gd" id="1_t2shv"]
 [ext_resource type="PackedScene" uid="uid://dgf7pwuv337sv" path="res://main/level.tscn" id="2_bjcbj"]
-[ext_resource type="ArrayMesh" uid="uid://div1guv8g4vv3" path="res://main/Terrain.obj" id="2_bxunh"]
-[ext_resource type="ArrayMesh" uid="uid://dit0db15py851" path="res://Tower/TowerBoi&Walls.obj" id="3_1cc1m"]
+[ext_resource type="ArrayMesh" uid="uid://c1qx1rjiubqqu" path="res://All Assets _ Textures/Terrain/Terrain.obj" id="2_hoqbg"]
+[ext_resource type="ArrayMesh" uid="uid://5dewx3s7h8bj" path="res://All Assets _ Textures/Spires/Spires.obj" id="3_7bqyn"]
+[ext_resource type="Texture2D" uid="uid://de18dijju6t2u" path="res://All Assets _ Textures/Tower/Tower NO TURRETS_aiStandardSurface11SG_BaseColor.png" id="3_4716s"]
+[ext_resource type="Texture2D" uid="uid://brcgcywnrvryp" path="res://All Assets _ Textures/TexturesCom_Ground_SoilRocky5_2x2_1K_albedo.png" id="3_lmns0"]
+[ext_resource type="Texture2D" uid="uid://sw665fkyurjt" path="res://All Assets _ Textures/Spires/Spires_aiStandardSurface30SG_BaseColor.png" id="4_00gkb"]
+[ext_resource type="ArrayMesh" uid="uid://ddwbdg7d3xexb" path="res://All Assets _ Textures/Tower/Tower NO TURRETS.obj" id="4_xxhfa"]
+[ext_resource type="Texture2D" uid="uid://b2fxp86aumley" path="res://All Assets _ Textures/TexturesCom_Ground_SoilRocky5_2x2_1K_normal.png" id="4_yqng5"]
 [ext_resource type="PackedScene" uid="uid://8q6ovcg2jcc4" path="res://UI/GameUI.tscn" id="5_56gkc"]
+[ext_resource type="Texture2D" uid="uid://dyfu74rkcvvcb" path="res://All Assets _ Textures/TexturesCom_Ground_SoilRocky5_2x2_1K_roughness.png" id="5_gnxwn"]
+[ext_resource type="ArrayMesh" uid="uid://b6ik4wr3h50d1" path="res://All Assets _ Textures/Meshes That Require Emission/Spire Lights.obj" id="5_i4rur"]
 [ext_resource type="Texture2D" uid="uid://b76v012i4uid0" path="res://main/explosion.png" id="6_8v2kb"]
 [ext_resource type="AudioStream" uid="uid://5wpqk86s021u" path="res://audio/Enemy 1 Death Explosion 02.mp3" id="7_08hac"]
-[ext_resource type="Texture2D" uid="uid://c5ynkse6pv7ul" path="res://Tower/RailGun/Railgun_aiStandardSurface19SG_BaseColor.png" id="8_ob4ij"]
-[ext_resource type="Texture2D" uid="uid://774d4ti78pj1" path="res://Tower/RailGun/Railgun_aiStandardSurface19SG_Height.png" id="9_ug650"]
-[ext_resource type="Texture2D" uid="uid://djqhng4e2r8jq" path="res://Tower/RailGun/Railgun_aiStandardSurface19SG_Metallic.png" id="10_csgyf"]
-[ext_resource type="Texture2D" uid="uid://q7roge6s1dj8" path="res://Tower/RailGun/Railgun_aiStandardSurface19SG_Normal.png" id="11_jgsgx"]
-[ext_resource type="Texture2D" uid="uid://cfu42g46me8k4" path="res://Tower/RailGun/Railgun_aiStandardSurface19SG_Roughness.png" id="12_xkdy8"]
-[ext_resource type="ArrayMesh" uid="uid://vv1s2wfxvh0i" path="res://Tower/RailGun/Railgun.obj" id="13_sk4x0"]
+[ext_resource type="ArrayMesh" uid="uid://bad82pbkai7cs" path="res://All Assets _ Textures/Scrap Piles/Scrap Piles.obj" id="9_1x41s"]
+[ext_resource type="Texture2D" uid="uid://br7h0jqo6vy34" path="res://All Assets _ Textures/Scrap Piles_aiStandardSurface37SG_BaseColor.png" id="10_gvvy7"]
+[ext_resource type="ArrayMesh" uid="uid://cu4vnwioicsb" path="res://All Assets _ Textures/Walls/Walls.obj" id="11_bm2g4"]
+[ext_resource type="Texture2D" uid="uid://bs8iyltbdfrkb" path="res://All Assets _ Textures/Walls/Walls_aiStandardSurface11SG_BaseColor.png" id="12_g6ciy"]
+[ext_resource type="Texture2D" uid="uid://d4e2tcjr4xa77" path="res://All Assets _ Textures/Tower With Turrets/Tower WITH TURRETS_aiStandardSurface28SG_BaseColor.png" id="13_8hx2n"]
+[ext_resource type="ArrayMesh" uid="uid://d103xohksc03" path="res://All Assets _ Textures/EMP Bases/Emp END CAPS.obj" id="13_um5vs"]
+[ext_resource type="ArrayMesh" uid="uid://c07rwvm02wrwa" path="res://All Assets _ Textures/Tower With Turrets/Tower WITH TURRETS.obj" id="14_akifn"]
+[ext_resource type="Texture2D" uid="uid://bk4naeama0n8m" path="res://All Assets _ Textures/EMP Bases/Emp END CAPS_aiStandardSurface11SG_BaseColor.png" id="14_dj013"]
+[ext_resource type="ArrayMesh" uid="uid://kl7wssex81go" path="res://Tower/Tower WITH SINGLE TURRETS.obj" id="14_q5kvr"]
+[ext_resource type="ArrayMesh" uid="uid://6lkh3miprf08" path="res://All Assets _ Textures/Meshes That Require Emission/EMP Lights.obj" id="15_20qiw"]
+[ext_resource type="Texture2D" uid="uid://bn1bkkmfy8qup" path="res://All Assets _ Textures/Tower With Turrets _ Railgun Space/Tower WITH RAIL GUN SPACE_aiStandardSurface29SG_BaseColor.png" id="15_icys4"]
+[ext_resource type="ArrayMesh" uid="uid://bw2ik47n0kjsy" path="res://All Assets _ Textures/Meshes That Require Emission/Tower Light.obj" id="16_cxppa"]
+[ext_resource type="ArrayMesh" uid="uid://cirsbom3f8dub" path="res://All Assets _ Textures/Meshes That Require Emission/Wall Lights.obj" id="16_h1wx3"]
+[ext_resource type="ArrayMesh" uid="uid://c84vfbfwjjpsm" path="res://All Assets _ Textures/Tower With Turrets _ Railgun Space/Tower WITH RAIL GUN SPACE.obj" id="16_p4kle"]
+[ext_resource type="Texture2D" uid="uid://cb5aydejumrwe" path="res://All Assets _ Textures/RailGun/Railgun_aiStandardSurface20SG_BaseColor.png" id="17_pftm2"]
+[ext_resource type="ArrayMesh" uid="uid://cob7n8n80nua5" path="res://All Assets _ Textures/RailGun/Railgun.obj" id="18_y3xqk"]
+[ext_resource type="ArrayMesh" uid="uid://cfavog6ncvqxh" path="res://All Assets _ Textures/Meshes That Require Emission/Railgun Lights.obj" id="19_yr67p"]
+[ext_resource type="Shader" path="res://main/laser.gdshader" id="28_k2s26"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ac3fk"]
-albedo_color = Color(0.501961, 0.0352941, 0.0235294, 1)
+albedo_texture = ExtResource("3_lmns0")
+metallic_specular = 0.0
+roughness_texture = ExtResource("5_gnxwn")
+normal_enabled = true
+normal_texture = ExtResource("4_yqng5")
+uv1_scale = Vector3(10, 10, 10)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xeuyb"]
-albedo_color = Color(1, 0.372549, 0.360784, 1)
-metallic = 0.68
-grow = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hd76q"]
+albedo_texture = ExtResource("4_00gkb")
+metallic_specular = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufm6v"]
+emission_enabled = true
+emission = Color(0, 0.556863, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_465uw"]
+albedo_texture = ExtResource("10_gvvy7")
+metallic_specular = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttive"]
+albedo_texture = ExtResource("3_4716s")
+metallic_specular = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrcj5"]
+cull_mode = 2
+albedo_texture = ExtResource("13_8hx2n")
+metallic_specular = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4ym0"]
+albedo_texture = ExtResource("15_icys4")
+metallic_specular = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8vby"]
+albedo_texture = ExtResource("17_pftm2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gjv1"]
+emission_enabled = true
+emission = Color(0, 0.521569, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="Curve" id="Curve_yjlow"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0736842), -2.27659, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xui1v"]
+curve = SubResource("Curve_yjlow")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ow64s"]
+emission_shape = 3
+emission_box_extents = Vector3(0.25, 0.25, 25)
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_xui1v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i7rk"]
+albedo_color = Color(0.498039, 1, 0.968627, 1)
+emission_enabled = true
+emission = Color(0, 0.580392, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_m3tvu"]
+material = SubResource("StandardMaterial3D_1i7rk")
+size = Vector3(0.02, 0.02, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owpu6"]
+albedo_texture = ExtResource("14_dj013")
+metallic_specular = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uqb4"]
+albedo_color = Color(0.639216, 1, 0.960784, 1)
+emission_enabled = true
+emission = Color(0, 0.584314, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13bv6"]
+albedo_texture = ExtResource("12_g6ciy")
+metallic_specular = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvbhm"]
+emission_enabled = true
+emission = Color(0, 0.509804, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wa2g6"]
+emission_enabled = true
+emission = Color(0, 0.470588, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3k5xo"]
+viewport_path = NodePath("levelViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8g6lq"]
+viewport_path = NodePath("levelViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5nr0"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_3k5xo")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 1.5
+emission_operator = 1
+emission_texture = SubResource("ViewportTexture_8g6lq")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0fqri"]
 viewport_path = NodePath("levelViewport")
@@ -47,48 +164,51 @@ _data = {
 "shake": SubResource("Animation_yaw1l")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mj5u1"]
+resource_local_to_scene = true
+shader = ExtResource("28_k2s26")
+shader_parameter/beams = 2
+shader_parameter/energy = 3.0
+shader_parameter/roughness = 3
+shader_parameter/frequency = 10
+shader_parameter/speed = 1.0
+shader_parameter/thickness = 0.011
+shader_parameter/outline_thickness = 0.028
+shader_parameter/beam_difference = 0.0
+shader_parameter/glow = 0.0
+shader_parameter/outline_glow = 0.0
+shader_parameter/color = Color(0.91, 1, 1, 1)
+shader_parameter/outline_color = Color(0.101961, 0.662745, 1, 1)
+shader_parameter/progress = 0.0
+shader_parameter/y_offset = 0.0
+shader_parameter/fixed_edge_size = 0.05
+shader_parameter/noise_scale = Vector2(4, 4)
+
 [sub_resource type="Environment" id="Environment_xpkox"]
 background_mode = 1
-background_color = Color(0.141176, 0.0431373, 0.0313726, 1)
-ssao_enabled = true
+background_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
 ssil_enabled = true
 sdfgi_enabled = true
-volumetric_fog_density = 0.0
+glow_enabled = true
+glow_levels/2 = 2.04
+glow_normalized = true
+glow_intensity = 1.08
+glow_bloom = 0.25
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1517
+volumetric_fog_albedo = Color(0.603922, 0.603922, 0.603922, 1)
+volumetric_fog_emission_energy = 3.45
 
 [sub_resource type="Animation" id="Animation_hjs40"]
 resource_name = "destroy"
 length = 2.2
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("tower:material_override:grow_amount")
+tracks/0/path = NodePath("explosionSprite3d")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(0.333, 1),
-"update": 0,
-"values": [0.0, 2.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("tower:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(3, 1),
-"update": 0,
-"values": [Vector3(0.657215, 7.42927, 0.018925), Vector3(0.657, 5, 0.019)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("explosionSprite3d")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -99,25 +219,25 @@ tracks/2/keys = {
 "method": &"play"
 }]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("GameUI/FadeRect:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameUI/FadeRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.2, 2),
 "transitions": PackedFloat32Array(1, 3, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("explosionSFX:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explosionSFX:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -201,43 +321,232 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a0kc"]
-albedo_texture = ExtResource("8_ob4ij")
-metallic = 1.0
-metallic_texture = ExtResource("10_csgyf")
-roughness_texture = ExtResource("12_xkdy8")
-normal_enabled = true
-normal_texture = ExtResource("11_jgsgx")
-heightmap_scale = 1.0
-heightmap_deep_parallax = true
-heightmap_min_layers = 8
-heightmap_max_layers = 32
-heightmap_texture = ExtResource("9_ug650")
-
 [node name="enviroment3D" type="Node3D"]
 process_mode = 3
 process_priority = 1
 script = ExtResource("1_t2shv")
 
 [node name="terrain" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 7.2659, 0)
-mesh = ExtResource("2_bxunh")
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 7.32437, 0)
+mesh = ExtResource("2_hoqbg")
 surface_material_override/0 = SubResource("StandardMaterial3D_ac3fk")
 
-[node name="playerLight" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.96046e-08, 9.70839, -1.86265e-09)
-light_color = Color(1, 0.803922, 0.6, 1)
-light_energy = 3.0
-light_specular = 0.0
-shadow_enabled = true
-spot_range = 13.9791
-spot_angle = 73.9098
+[node name="Spires" type="MeshInstance3D" parent="terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3453, 0, -0.138272)
+mesh = ExtResource("3_7bqyn")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_hd76q")
 
-[node name="tower" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.657215, 7.42927, 0.018925)
-material_override = SubResource("StandardMaterial3D_xeuyb")
-cast_shadow = 0
-mesh = ExtResource("3_1cc1m")
+[node name="SpireLights" type="MeshInstance3D" parent="terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3453, 0, -0.138272)
+mesh = ExtResource("5_i4rur")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ufm6v")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="terrain/SpireLights"]
+transform = Transform3D(-2.81302, 2.09496, -1.92304, 0.494421, 3.02403, 2.57115, 2.80045, 1.57047, -2.38561, -20.4497, 6.20199, -21.8505)
+light_color = Color(0.615686, 1, 0.984314, 1)
+light_energy = 7.867
+light_volumetric_fog_energy = 5.429
+shadow_enabled = true
+spot_range = 200.0
+spot_angle = 34.5
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="terrain/SpireLights"]
+transform = Transform3D(-2.99217, -1.41855, 2.24379, 0.494421, 3.02403, 2.57115, -2.60815, 2.20068, -2.08676, 20.615, 6.20199, -21.2166)
+light_color = Color(0.615686, 1, 0.984314, 1)
+light_energy = 7.867
+light_volumetric_fog_energy = 5.429
+shadow_enabled = true
+spot_range = 200.0
+spot_angle = 34.5
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="terrain/SpireLights"]
+transform = Transform3D(2.47716, -2.2596, 2.18126, 0.494421, 3.02403, 2.57115, -3.10149, -1.32267, 2.15205, 20.2929, 6.20199, 19.8438)
+light_color = Color(0.615686, 1, 0.984314, 1)
+light_energy = 7.867
+light_volumetric_fog_energy = 5.429
+shadow_enabled = true
+spot_range = 200.0
+spot_angle = 34.5
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="terrain/SpireLights"]
+transform = Transform3D(2.53173, 1.75531, -2.55132, 0.494421, 3.02403, 2.57115, 3.05711, -1.94272, 1.69704, -20.5499, 6.20199, 19.3932)
+light_color = Color(0.615686, 1, 0.984314, 1)
+light_energy = 7.867
+light_volumetric_fog_energy = 5.429
+shadow_enabled = true
+spot_range = 200.0
+spot_angle = 34.5
+
+[node name="scrapPivot" type="Node3D" parent="terrain"]
+transform = Transform3D(0.906581, 0, -0.422033, 0, 1, 0, 0.422033, 0, 0.906581, -47.9437, 1.28334, -2.32708)
+
+[node name="ScrapPiles" type="MeshInstance3D" parent="terrain/scrapPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.3683, -1.33149, 2.32708)
+mesh = ExtResource("9_1x41s")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_465uw")
+
+[node name="scrapPivot2" type="Node3D" parent="terrain"]
+transform = Transform3D(0.875481, 0, 0.483252, 0, 1, 0, -0.483252, 0, 0.875481, -22.9468, 1.28334, 23.1664)
+
+[node name="ScrapPiles" type="MeshInstance3D" parent="terrain/scrapPivot2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.3683, -1.33149, 2.32708)
+mesh = ExtResource("9_1x41s")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_465uw")
+
+[node name="scrapPivot3" type="Node3D" parent="terrain"]
+transform = Transform3D(-0.369909, 0, 0.929068, 0, 1, 0, -0.929068, 0, -0.369909, 30.9719, 1.28334, 23.1664)
+
+[node name="ScrapPiles" type="MeshInstance3D" parent="terrain/scrapPivot3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.3683, -1.33149, 2.32708)
+mesh = ExtResource("9_1x41s")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_465uw")
+
+[node name="scrapPivot4" type="Node3D" parent="terrain"]
+transform = Transform3D(0.835107, 0, 0.550087, 0, 1, 0, -0.550087, 0, 0.835107, 30.9719, 1.28334, -41.5709)
+
+[node name="ScrapPiles" type="MeshInstance3D" parent="terrain/scrapPivot4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.3683, -1.33149, 2.32708)
+mesh = ExtResource("9_1x41s")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_465uw")
+
+[node name="scrapPivot5" type="Node3D" parent="terrain"]
+transform = Transform3D(-0.908654, 0, 0.41755, 0, 1, 0, -0.41755, 0, -0.908654, -36.7491, 1.28334, -41.5709)
+
+[node name="ScrapPiles" type="MeshInstance3D" parent="terrain/scrapPivot5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.3683, -1.33149, 2.32708)
+mesh = ExtResource("9_1x41s")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_465uw")
+
+[node name="scrapPivot6" type="Node3D" parent="terrain"]
+transform = Transform3D(-0.908654, 0, 0.41755, 0, 1, 0, -0.41755, 0, -0.908654, -44.9938, 1.28334, 14.8567)
+
+[node name="ScrapPiles" type="MeshInstance3D" parent="terrain/scrapPivot6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.3683, -1.33149, 2.32708)
+mesh = ExtResource("9_1x41s")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_465uw")
+
+[node name="scrapPivot7" type="Node3D" parent="terrain"]
+transform = Transform3D(-0.78522, 0, 0.619217, 0, 1, 0, -0.619217, 0, -0.78522, -67.1959, 1.28334, 57.8259)
+
+[node name="ScrapPiles" type="MeshInstance3D" parent="terrain/scrapPivot7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.3683, -1.33149, 2.32708)
+mesh = ExtResource("9_1x41s")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_465uw")
+
+[node name="playerLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.603733, 10.6202, 0.0742802)
+visible = false
+light_color = Color(1, 0.803922, 0.6, 1)
+light_energy = 9.4
+light_specular = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 13.979
+spot_angle = 78.2
+
+[node name="tower" type="Node3D" parent="."]
+transform = Transform3D(-0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0.657215, 7.42927, 0.018925)
+
+[node name="towerNoTurrets" type="MeshInstance3D" parent="tower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.725307, 0)
+material_override = SubResource("StandardMaterial3D_ttive")
+cast_shadow = 2
+mesh = ExtResource("4_xxhfa")
+skeleton = NodePath("../..")
+
+[node name="towerTurrets2" type="MeshInstance3D" parent="tower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.709175, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_yrcj5")
+cast_shadow = 2
+mesh = ExtResource("14_q5kvr")
+skeleton = NodePath("../..")
+
+[node name="towerTurrets4" type="MeshInstance3D" parent="tower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.709175, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_yrcj5")
+cast_shadow = 2
+mesh = ExtResource("14_akifn")
+skeleton = NodePath("../..")
+
+[node name="towerRailgun" type="MeshInstance3D" parent="tower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.709175, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_c4ym0")
+cast_shadow = 2
+mesh = ExtResource("16_p4kle")
+skeleton = NodePath("../..")
+
+[node name="railgunPivot" type="Node3D" parent="tower/towerRailgun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12505, 10.491, 0.346309)
+
+[node name="railgun" type="MeshInstance3D" parent="tower/towerRailgun/railgunPivot"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.206091, -10.4911, 0.283663)
+material_override = SubResource("StandardMaterial3D_r8vby")
+mesh = ExtResource("18_y3xqk")
+skeleton = NodePath("../../../..")
+
+[node name="railgunLights" type="MeshInstance3D" parent="tower/towerRailgun/railgunPivot"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.206091, -10.4911, 0.283663)
+material_override = SubResource("StandardMaterial3D_0gjv1")
+mesh = ExtResource("19_yr67p")
+skeleton = NodePath("../../../..")
+
+[node name="railgunParticles" type="GPUParticles3D" parent="tower/towerRailgun/railgunPivot"]
+transform = Transform3D(0.999994, 0, 0, 0, 0.965926, 0.258819, 0, -0.258817, 0.96592, 0.21305, -4.91404, -28.8623)
+emitting = false
+amount = 75
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-4, -4, -39.791, 8, 8, 79.5821)
+process_material = SubResource("ParticleProcessMaterial_ow64s")
+draw_pass_1 = SubResource("BoxMesh_m3tvu")
+
+[node name="empField" type="MeshInstance3D" parent="tower"]
+visible = false
+mesh = ExtResource("13_um5vs")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_owpu6")
+
+[node name="empLights" type="MeshInstance3D" parent="tower/empField"]
+mesh = ExtResource("15_20qiw")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1uqb4")
+
+[node name="walls" type="MeshInstance3D" parent="tower"]
+visible = false
+mesh = ExtResource("11_bm2g4")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_13bv6")
+
+[node name="wallLights" type="MeshInstance3D" parent="tower/walls"]
+transform = Transform3D(1, 0, -2.84217e-14, 0, 1, 0, 2.84217e-14, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_hvbhm")
+mesh = ExtResource("16_h1wx3")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1uqb4")
+
+[node name="towerLights" type="MeshInstance3D" parent="tower"]
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 0, -0.7118, 0)
+material_override = SubResource("StandardMaterial3D_wa2g6")
+mesh = ExtResource("16_cxppa")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1uqb4")
+
+[node name="grateLight" type="SpotLight3D" parent="tower"]
+transform = Transform3D(6.66667, 5.68434e-14, -5.68434e-14, 0, 5.7735, 3.33333, 5.68434e-14, -3.33333, 5.7735, 0, 5.37342, -0.653105)
+light_color = Color(0.364706, 1, 0.933333, 1)
+shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.8326, 0)
@@ -245,6 +554,9 @@ size = 10.0
 
 [node name="projectedLevel" type="Sprite3D" parent="Camera3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, -1.59872e-14, 0, 1.59872e-14, 0.5, 0, 1.88721e-07, -4.31745)
+layers = 3
+material_override = SubResource("StandardMaterial3D_n5nr0")
+shaded = true
 double_sided = false
 texture = SubResource("ViewportTexture_0fqri")
 
@@ -252,15 +564,6 @@ texture = SubResource("ViewportTexture_0fqri")
 libraries = {
 "": SubResource("AnimationLibrary_5tpvk")
 }
-
-[node name="playerLight" type="SpotLight3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6426e-08, -1.0621)
-light_color = Color(1, 0.803922, 0.6, 1)
-light_energy = 3.0
-light_specular = 0.0
-shadow_enabled = true
-spot_range = 13.9791
-spot_angle = 73.9098
 
 [node name="levelViewport" type="SubViewport" parent="."]
 process_mode = 3
@@ -273,13 +576,18 @@ render_target_update_mode = 4
 [node name="level" parent="levelViewport" instance=ExtResource("2_bjcbj")]
 unique_name_in_owner = true
 
+[node name="laser" parent="levelViewport/level/tower/railgunAttack" index="0"]
+material = SubResource("ShaderMaterial_mj5u1")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xpkox")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.177695, -0.536563, 0.824939, -0.977578, -1.92097e-09, 0.210574, -0.112986, -0.84386, -0.524532, 0, 17.7456, 0)
-light_color = Color(0, 0.105882, 0.65098, 1)
+transform = Transform3D(0.977578, 2.37844e-07, -0.210574, 0.200883, -0.299873, 0.932589, -0.0631452, -0.953979, -0.29315, 0, 17.7456, 0)
+visible = false
+light_bake_mode = 1
 shadow_enabled = true
+editor_only = true
 
 [node name="GameUI" parent="." instance=ExtResource("5_56gkc")]
 process_mode = 1
@@ -307,15 +615,18 @@ volume_db = 15.0
 unit_size = 45.57
 pitch_scale = 0.4
 
-[node name="railgunPivot" type="Node3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.652727, 8.57502, 0.0159232)
+[node name="healLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33635, 7.60224, 3.57806)
+light_color = Color(0.0745098, 0.67451, 0.254902, 1)
+light_energy = 6.8
+omni_range = 0.947
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="railgunPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.803, 0)
-material_override = SubResource("StandardMaterial3D_0a0kc")
-mesh = ExtResource("13_sk4x0")
-skeleton = NodePath("../..")
-
+[connection signal="empUnlocked" from="levelViewport/level/tower" to="." method="_on_tower_emp_unlocked"]
+[connection signal="railgunFired" from="levelViewport/level/tower" to="." method="_on_tower_railgun_fired"]
+[connection signal="railgunUnlocked" from="levelViewport/level/tower" to="." method="_on_tower_railgun_unlocked"]
+[connection signal="secondaryTurretsUnlocked" from="levelViewport/level/tower" to="." method="_on_tower_secondary_turrets_unlocked"]
+[connection signal="turretsUnlocked" from="levelViewport/level/tower" to="." method="_on_tower_turrets_unlocked"]
+[connection signal="wallsUnlocked" from="levelViewport/level/tower" to="." method="_on_tower_walls_unlocked"]
 [connection signal="plrAttack" from="levelViewport/level/Player" to="." method="_on_player_plr_attack"]
 [connection signal="animation_finished" from="towerDestructionAnim" to="." method="_on_tower_destruction_anim_animation_finished"]
 

@@ -24,3 +24,11 @@ func startGame():
 func _on_entry_anim_animation_finished(anim_name):
 	if anim_name == "enter":
 		$entryAnim.play("float")
+
+
+func hover():
+	$menuHover.play()
+
+
+func click():
+	$menuClick.play()

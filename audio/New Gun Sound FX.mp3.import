@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtgrxbv2wfpf7"
+path="res://.godot/imported/New Gun Sound FX.mp3-d5f22d83504e9677bbe59eadcd7d9108.mp3str"
+
+[deps]
+
+source_file="res://audio/New Gun Sound FX.mp3"
+dest_files=["res://.godot/imported/New Gun Sound FX.mp3-d5f22d83504e9677bbe59eadcd7d9108.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

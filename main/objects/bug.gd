@@ -7,6 +7,7 @@ var dead:bool = false
 var target:Vector2
 var rectMax = 50
 var playerDamaged:bool = false
+var railgunExplosion:bool = false
 @export var explodeRange:float = 100.0
 @export var xpAmt:int = 1
 @export var damageAmt:int = 1
@@ -27,11 +28,10 @@ func die():
 	$enemySprite.visible = false
 	$healthbarPivot/underHealth.visible = false
 	$healthbarPivot/overHealth.visible = false
-	if randf() > 0.5: $explosionASFX.play();
+	if railgunExplosion: $explosionRail.play();
+	elif randf() > 0.5: $explosionASFX.play();
 	else: $explosionBSFX.play();
 	$hitbox.set_deferred("disabled", true)
-	Stats.add_score(xpAmt)
-	Stats.add_score(1)
 	for xpIdx in range(xpAmt * 5 if playerDamaged else 1):
 		GV.xpQueue.append(self.global_position)
 	GV.enemies.erase(self)
@@ -79,3 +79,7 @@ func _on_bullet_timer_timeout():
 	get_parent().add_child(newBullet)
 	newBullet.global_position = $enemySprite/projectile.global_position
 	newBullet.target = target
+	get_node("bulletSFX" + str(randi_range(1, 2))).play()
+
+func railgunHit():
+	railgunExplosion = true

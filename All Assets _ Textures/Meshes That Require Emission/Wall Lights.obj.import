@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cirsbom3f8dub"
+path="res://.godot/imported/Wall Lights.obj-a802a06736393f800096e711cd4b636f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Wall Lights.obj-a802a06736393f800096e711cd4b636f.mesh"]
+
+source_file="res://All Assets _ Textures/Meshes That Require Emission/Wall Lights.obj"
+dest_files=["res://.godot/imported/Wall Lights.obj-a802a06736393f800096e711cd4b636f.mesh", "res://.godot/imported/Wall Lights.obj-a802a06736393f800096e711cd4b636f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

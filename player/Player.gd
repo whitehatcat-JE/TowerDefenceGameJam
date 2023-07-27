@@ -24,10 +24,12 @@ func _process(delta):
 		velocity = velocity.move_toward(ip * maxSpeed, acceleration * delta)
 		if $playerSprite.animation == "idle":
 			$playerSprite.play("walk")
+		if $footstepTimer.is_stopped(): _on_footstep_timer_timeout();
 	else: 
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		if $playerSprite.animation == "walk":
 			$playerSprite.play("idle")
+		if !$footstepTimer.is_stopped(): $footstepTimer.stop();
 
 	if velocity.x > 0:
 		$playerSprite.scale.x = 0.5
@@ -67,6 +69,8 @@ func _on_xp_collision_field_area_entered(area):
 	area.queue_free()
 	if area.type == "xp":
 		GV.xp += 1
+		Stats.add_score(1)
+		get_node("xpSFX" + str(randi_range(1, 2))).play()
 	elif GV._health < GV.startingHealth:
 		GV._health += 1
 
@@ -79,3 +83,8 @@ func _on_player_sprite_animation_finished():
 		$playerSprite.play("idle")
 		$playerSprite/attackSprite.play("idle")
 		attacking = false
+
+
+func _on_footstep_timer_timeout():
+	get_node("footstepSFX" + str(randi_range(1, 5))).play()
+	$footstepTimer.start()

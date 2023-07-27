@@ -6,7 +6,7 @@ var startingHealth:int = 5
 var _health:int = startingHealth
 
 var xp:int = 0
-var xpThreshold:int = 20
+var xpThreshold:int = 40
 var xpQueue:Array = []
 var healQueue:Array = []
 
